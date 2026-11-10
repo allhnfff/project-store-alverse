@@ -1,0 +1,10 @@
+node_modules/
+__pycache__/
+*.log
+*.png.tmp
+.DS_Store
+shot-*.png
+store/_wrapped.html
+store/_published.html
+.dev.vars
+.wrangler/

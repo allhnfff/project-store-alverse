@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>H&T Store — Premium Digital Products</title>
+
+  <!-- Favicon (PAKAI LOGO STORE) -->
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root{
+      --bg0:#060b14;
+      --bg1:#0b1220;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.08);
+      --stroke: rgba(255,255,255,.12);
+      --stroke2: rgba(255,255,255,.18);
+      --text:#eaf0ff;
+      --muted: rgba(234,240,255,.72);
+      --muted2: rgba(234,240,255,.55);
+
+      --primary:#6ee7ff;
+      --primary2:#8b5cf6;
+      --good:#22c55e;
+      --warn:#f59e0b;
+      --danger:#ef4444;
+
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --shadow2: 0 10px 30px rgba(0,0,0,.35);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --radius-sm: 12px;
+
+      --max: 1180px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 15% 10%, rgba(139,92,246,.25), transparent 60%),
+                  radial-gradient(1000px 700px at 90% 20%, rgba(110,231,255,.18), transparent 55%),
+                  linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x:hidden;
+    }
+
+    /* Subtle animated grain / glow */
+    .bg-glow{
+      position:fixed; inset:-40px;
+      background:
+        radial-gradient(800px 600px at 20% 30%, rgba(110,231,255,.12), transparent 60%),
+        radial-gradient(900px 700px at 80% 35%, rgba(139,92,246,.14), transparent 60%),
+        radial-gradient(700px 650px at 50% 90%, rgba(34,197,94,.08), transparent 60%);
+      filter: blur(10px);
+      z-index:-2;
+      animation: drift 14s ease-in-out infinite alternate;
+    }
+    @keyframes drift{
+      from{ transform: translate3d(0,0,0) scale(1); }
+      to{ transform: translate3d(20px,-10px,0) scale(1.03); }
+    }
+    .noise{
+      position:fixed; inset:0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.15'/%3E%3C/svg%3E");
+      opacity:.15;
+      mix-blend-mode: overlay;
+      pointer-events:none;
+      z-index:-1;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    /* Topbar */
+    .topbar{
+      background: rgba(0,0,0,.22);
+      border-bottom: 1px solid var(--stroke);
+      backdrop-filter: blur(12px);
+    }
+    .topbar .wrap{
+      display:flex; gap:12px; align-items:center; justify-content:space-between;
+      padding: 10px 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .topbar .left{ display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      padding: 7px 10px;
+      border-radius: 999px;
+    }
+    .pill i{ color: var(--primary); }
+    .topbar .right{ display:flex; gap:10px; align-items:center; }
+    .btn-mini{
+      display:inline-flex; gap:8px; align-items:center; justify-content:center;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      transition: .2s ease;
+      cursor:pointer;
+      font-size: 13px;
+    }
+    .btn-mini:hover{ transform: translateY(-1px); border-color: var(--stroke2); background: rgba(255,255,255,.06); }
+
+    /* Navbar */
+    header{
+      position: sticky; top:0; z-index:50;
+      background: rgba(6,11,20,.55);
+      border-bottom: 1px solid var(--stroke);
+      backdrop-filter: blur(14px);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+      padding: 14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+
+    /* LOGO NAVBAR */
+    .brand .mark{
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display:grid;
+      place-items:center;
+      background: transparent;
+      border: 2px solid rgba(110,231,255,.45);
+      box-shadow:
+        0 0 0 4px rgba(110,231,255,.14),
+        0 12px 30px rgba(0,0,0,.35);
+      overflow: hidden;
+    }
+    .brand .mark img{
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      display:block;
+      filter: drop-shadow(0 10px 25px rgba(0,0,0,.25));
+    }
+    .brand .mark i{ color:#08101f; display:none; }
+
+    .brand small{
+      display:block;
+      font-weight:600;
+      color: var(--muted);
+      letter-spacing:0;
+      margin-top:2px;
+    }
+    .navlinks{
+      display:flex; gap:18px; align-items:center;
+    }
+    .navlinks a{
+      color: var(--muted);
+      font-weight: 600;
+      padding: 10px 12px;
+      border-radius: 999px;
+      transition: .2s ease;
+    }
+    .navlinks a:hover{ color: var(--text); background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08); }
+    .nav-cta{
+      display:flex; gap:10px; align-items:center;
+    }
+    .btn-primary{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding: 11px 14px;
+      border-radius: 999px;
+      border: 0;
+      cursor:pointer;
+      font-weight: 800;
+      color:#091023;
+      background: linear-gradient(135deg, var(--primary), var(--primary2));
+      box-shadow: 0 16px 40px rgba(110,231,255,.18);
+      transition: .2s ease;
+      white-space:nowrap;
+    }
+    .btn-primary:hover{ transform: translateY(-2px); filter: brightness(1.05); }
+    .btn-ghost{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding: 11px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-weight: 800;
+      cursor:pointer;
+      transition: .2s ease;
+      white-space:nowrap;
+    }
+    .btn-ghost:hover{ transform: translateY(-2px); background: rgba(255,255,255,.06); border-color: var(--stroke2); }
+
+    .burger{
+      display:none;
+      width: 42px; height: 42px;
+      border-radius: 12px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      cursor:pointer;
+      color: var(--text);
+    }
+
+    /* Hero */
+    .hero{ padding: 46px 0 22px; }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+    .hero-card{
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute; inset:-80px -120px auto auto;
+      width: 360px; height: 360px;
+      background: radial-gradient(circle at 30% 30%, rgba(110,231,255,.35), transparent 60%),
+                  radial-gradient(circle at 70% 70%, rgba(139,92,246,.35), transparent 60%);
+      filter: blur(10px);
+      transform: rotate(8deg);
+      opacity:.75;
+      pointer-events:none;
+    }
+    .hero-inner{
+      padding: 28px 28px 22px;
+      position:relative;
+    }
+
+    .hero-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-top: 14px;
+      margin-bottom: 6px;
+    }
+    .hero-brand img{
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 30px rgba(0,0,0,.45));
+    }
+    .hero-brand b{ font-size: 14px; letter-spacing: .2px; }
+    .hero-brand span{
+      display:block;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 650;
+      margin-top: 2px;
+    }
+
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      border: 1px solid rgba(110,231,255,.25);
+      background: rgba(110,231,255,.08);
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .kicker i{ color: var(--primary); }
+    .hero h1{
+      margin: 14px 0 10px;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.12;
+      letter-spacing: -0.8px;
+    }
+    .grad{
+      background: linear-gradient(135deg, #fff, var(--primary), var(--primary2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p{
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.65;
+      max-width: 62ch;
+    }
+    .hero-actions{
+  display:flex;
+  gap: 10px;
+  margin-top: 14px;
+  flex-wrap: nowrap;          /* jangan turun ke bawah */
+}
+.hero-actions a{
+  flex: 1 1 0;                /* bagi rata 2 tombol */
+  justify-content: center;
+}
+    .hero-actions .btn{
+      font-size: 14px;
+    }
+    .hero-badges{
+      display:flex; flex-wrap:wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .badge{
+      display:flex; align-items:center; gap:10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+
+      font-weight: 650;
+      font-size: 13px;
+    }
+    .badge i{ color: var(--primary); }
+
+    /* Side */
+    .side{ display:flex; flex-direction:column; gap: 14px; }
+    .stat{
+      padding: 18px;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      box-shadow: var(--shadow2);
+    }
+    .stat h3{ margin:0 0 8px; font-size: 16px; letter-spacing: -.2px; }
+    .stat p{ margin:0; color: var(--muted); font-size: 13.5px; line-height:1.65; }
+    .stat .row{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .metric{
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding: 12px;
+    }
+    .metric b{ display:block; font-size: 16px; }
+    .metric span{ color: var(--muted2); font-size: 12px; }
+
+    /* Section */
+    .section{ padding: 22px 0 40px; }
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between; gap: 16px; flex-wrap:wrap;
+      margin-top: 14px;
+      margin-bottom: 14px;
+    }
+    .section-title{ margin: 0; font-size: 22px; letter-spacing: -.4px; }
+    .section-sub{ margin: 6px 0 0; color: var(--muted); font-size: 13.5px; }
+
+    .controls{
+      display:grid;
+      grid-template-columns: 1.25fr .6fr .6fr;
+      gap: 10px;
+      width: min(720px, 100%);
+    }
+    .field{
+      border-radius: 16px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      display:flex; align-items:center; gap:10px;
+      padding: 12px 12px;
+    }
+    .field i{ color: var(--muted2); }
+    input[type="text"], select{
+      width:100%;
+      border:0;
+      outline:0;
+      background: transparent;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 13.5px;
+    }
+    select option{ background: #0b1220; color: var(--text); }
+    .field button{
+      border: 0;
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 12px;
+      width: 34px; height: 34px;
+      cursor:pointer;
+      transition: .2s ease;
+      display:grid; place-items:center;
+    }
+    .field button:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.18); background: rgba(255,255,255,.08); }
+
+    /* Chips */
+    .chips{
+      display:flex; flex-wrap:wrap; gap: 10px;
+      margin: 10px 0 18px;
+    }
+    .chip{
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-weight: 750;
+      cursor:pointer;
+      transition: .2s ease;
+      font-size: 13px;
+    }
+    .chip:hover{ background: rgba(255,255,255,.06); border-color: var(--stroke2); transform: translateY(-1px); }
+    .chip.active{
+      color: #091023;
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--primary), var(--primary2));
+    }
+
+    /* Product grid (desktop) */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    /* === PRICE BOX LEBIH RINGKAS === */
+.pricebox{
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.20);
+  padding: 7px;          /* diperkecil */
+  margin-bottom: 10px;
+}
+
+.price-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 5px 0;        /* diperkecil */
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  gap: 6px;
+}
+
+.price-row small{
+  color: var(--muted2);
+  font-weight: 650;
+  font-size: 11px;       /* diperkecil */
+}
+
+.price-row b{
+  font-weight: 800;
+  font-size: 12px;       /* diperkecil */
+  background: linear-gradient(135deg, var(--primary), var(--primary2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color: transparent;
+  white-space:nowrap;
+}
+
+    .card{
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      overflow:hidden;
+      box-shadow: var(--shadow2);
+      transition: .22s ease;
+      position:relative;
+    }
+    .card:hover{ transform: translateY(-4px); border-color: rgba(110,231,255,.35); }
+    .card-top{
+      height: 150px;
+      background:
+        radial-gradient(120px 120px at 20% 30%, rgba(110,231,255,.26), transparent 70%),
+        radial-gradient(160px 160px at 70% 40%, rgba(139,92,246,.22), transparent 70%),
+        linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      display:flex; align-items:center; justify-content:center;
+      position:relative;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .logo{
+      width: 68px; height: 68px;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 25px rgba(0,0,0,.35));
+    }
+    .fallback{
+      width: 68px; height: 68px;
+      border-radius: 22px;
+      display:grid; place-items:center;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .fallback i{ font-size: 28px; color: var(--primary); }
+
+    .tag{
+      position:absolute; top: 12px; left: 12px;
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.25);
+      color: var(--text);
+      font-weight: 800;
+      font-size: 12px;
+      backdrop-filter: blur(10px);
+    }
+    .tag i{ color: var(--warn); }
+
+    .card-body{ padding: 14px 14px 16px; }
+    .title{ margin: 0 0 6px; font-size: 16px; letter-spacing: -.25px; }
+    .desc{
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      min-height: 38px;
+    }
+
+    .pricebox{
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.20);
+      padding: 10px;
+      margin-bottom: 12px;
+    }
+    .price-row{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      gap: 10px;
+    }
+    .price-row:last-child{ border-bottom:0; }
+    .price-row small{ color: var(--muted2); font-weight: 650; }
+    .price-row b{
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary), var(--primary2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color: transparent;
+      white-space:nowrap;
+    }
+
+    .card-actions{
+      display:flex; gap: 10px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      flex: 1 1 120px;
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding: 11px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-weight: 900;
+      cursor:pointer;
+      transition: .2s ease;
+      font-size: 13px;
+      white-space:nowrap;
+    }
+    .btn:hover{ transform: translateY(-2px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18); }
+
+    .btn.whatsapp{
+      border: 0;
+      color: #07120d;
+      background: linear-gradient(135deg, #22c55e, #86efac);
+    }
+    .btn.whatsapp:hover{ filter: brightness(1.05); }
+
+    .btn.bot{
+      border: 0;
+      color: #0a1020;
+      background: linear-gradient(135deg, rgba(110,231,255,.95), rgba(139,92,246,.90));
+    }
+    .btn.bot:hover{ filter: brightness(1.05); }
+
+    .empty{
+      margin-top: 18px;
+      border-radius: var(--radius-xl);
+      border: 1px dashed rgba(255,255,255,.22);
+      background: rgba(255,255,255,.03);
+      padding: 22px;
+      color: var(--muted);
+      display:none;
+    }
+    .empty.active{ display:block; }
+
+    /* Trust + FAQ */
+    .two-col{
+      display:grid; grid-template-columns: 1fr 1fr; gap: 14px;
+      margin-top: 18px;
+    }
+    .box{
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      box-shadow: var(--shadow2);
+      padding: 18px;
+    }
+    .box h3{ margin:0 0 10px; letter-spacing:-.2px; }
+    .quote{
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.20);
+      padding: 12px;
+      border-radius: 16px;
+      margin-top: 10px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .quote b{ color: var(--text); }
+    details{
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius: 16px;
+      padding: 12px 12px;
+      margin-top: 10px;
+    }
+    summary{
+      cursor:pointer;
+      font-weight: 850;
+      color: var(--text);
+      list-style:none;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    details p{ margin: 10px 0 0; color: var(--muted); line-height: 1.65; font-size: 13.5px; }
+
+    /* Contact */
+    .contact{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .contact a{
+      border-radius: 18px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      padding: 14px;
+      display:flex; gap:12px; align-items:center;
+      transition:.2s ease;
+    }
+    .contact a:hover{ transform: translateY(-3px); border-color: rgba(110,231,255,.28); }
+    .ic{
+      width: 44px; height: 44px;
+      border-radius: 16px;
+      display:grid; place-items:center;
+      background: linear-gradient(135deg, rgba(110,231,255,.95), rgba(139,92,246,.90));
+      color:#08101f;
+      flex: 0 0 auto;
+    }
+    .contact h4{ margin:0; font-size: 14px; }
+    .contact p{ margin:3px 0 0; color: var(--muted); font-size: 12.5px; }
+
+    /* Footer */
+    footer{
+      border-top: 1px solid var(--stroke);
+      background: rgba(0,0,0,.25);
+      margin-top: 32px;
+      padding: 24px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .foot{
+      display:flex; justify-content:space-between; align-items:center; gap: 12px; flex-wrap:wrap;
+    }
+    .heart{ color: #fb7185; }
+
+    /* Modal */
+    .modal{
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.55);
+      display:none;
+      place-items:center;
+      padding: 18px;
+      z-index: 99;
+      backdrop-filter: blur(10px);
+    }
+    .modal.active{ display:grid; }
+    .modal-card{
+      width: min(860px, 100%);
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .modal-head{
+      display:flex; align-items:center; justify-content:space-between; gap: 12px;
+      padding: 14px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+    }
+    .modal-head b{ letter-spacing:-.2px; }
+    .x{
+      width: 42px; height: 42px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      cursor:pointer;
+      transition:.2s ease;
+    }
+    .x:hover{ transform: translateY(-1px); background: rgba(255,255,255,.06); }
+    .modal-body{
+      display:grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 0;
+    }
+    .modal-left{
+      padding: 18px;
+      border-right: 1px solid rgba(255,255,255,.10);
+    }
+    .modal-right{ padding: 18px; }
+    .big{
+      height: 220px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(160px 160px at 20% 30%, rgba(110,231,255,.22), transparent 70%),
+        radial-gradient(180px 180px at 70% 40%, rgba(139,92,246,.20), transparent 70%),
+        linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      display:grid; place-items:center;
+    }
+    .big img{ width: 92px; height: 92px; object-fit:contain; }
+    .modal-right h2{ margin: 0 0 6px; letter-spacing: -.4px; }
+    .modal-right p{ margin: 0 0 14px; color: var(--muted); line-height:1.65; }
+
+    .mini-note{
+      border-radius: 18px;
+      border: 1px solid rgba(34,197,94,.25);
+      background: rgba(34,197,94,.08);
+      color: rgba(234,240,255,.85);
+      padding: 10px 12px;
+      font-size: 13px;
+      line-height:1.55;
+      margin: 10px 0 14px;
+      display:flex; gap:10px; align-items:flex-start;
+    }
+    .mini-note i{ color: #86efac; margin-top: 2px; }
+
+    .modal-actions{ display:flex; gap: 10px; flex-wrap:wrap; margin-top: 12px; }
+    .modal-actions .btn{ flex: 1 1 220px; }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .grid{ grid-template-columns: repeat(2, 1fr); }
+      .contact{ grid-template-columns: repeat(2, 1fr); }
+      .modal-body{ grid-template-columns: 1fr; }
+      .modal-left{ border-right:0; border-bottom: 1px solid rgba(255,255,255,.10); }
+      .controls{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px){
+      .navlinks, .nav-cta{ display:none; }
+      .burger{ display:inline-grid; place-items:center; }
+      .two-col{ grid-template-columns: 1fr; }
+      .topbar .right{ display:none; }
+
+      /* ✅ Produk kecil & scroll menyamping di HP */
+      .grid{
+        display:flex;
+        gap: 12px;
+        overflow-x:auto;
+        padding-bottom: 8px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+      .grid::-webkit-scrollbar{ height: 8px; }
+      .grid::-webkit-scrollbar-thumb{ background: rgba(255,255,255,.18); border-radius: 999px; }
+      .card{
+        flex: 0 0 78%;
+        max-width: 78%;
+        scroll-snap-align: start;
+      }
+      .card-top{ height: 140px; }
+      .desc{ min-height: unset; }
+    }
+
+    /* Mobile menu */
+    .mnav{
+      display:none;
+      border-top: 1px solid rgba(255,255,255,.10);
+      padding: 10px 0 16px;
+    }
+    .mnav.active{ display:block; }
+    .mnav a{
+      display:flex;
+      padding: 12px 10px;
+      border-radius: 14px;
+      color: var(--muted);
+      font-weight: 800;
+      border: 1px solid transparent;
+    }
+    .mnav a:hover{ background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.10); color: var(--text); }
+  </style>
+</head>
+<body>
+  <div class="bg-glow"></div>
+  <div class="noise"></div>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="wrap">
+      <div class="left">
+        <span class="pill"><i class="fa-solid fa-shield-heart"></i> 100% Trusted</span>
+        <span class="pill"><i class="fa-solid fa-bolt"></i> Fast Respon</span>
+        <span class="pill"><i class="fa-solid fa-award"></i> Sejak 2023</span>
+      </div>
+      <div class="right">
+        <button class="btn-mini" id="btnCopyWA"><i class="fa-brands fa-whatsapp"></i> Salin Nomor Admin</button>
+        <a class="btn-mini" href="#contact"><i class="fa-solid fa-headset"></i> Bantuan</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="#">
+          <span class="mark">
+            <img src="logo.png" alt="H&T Store"
+                 onerror="this.remove(); this.parentElement.innerHTML='<i class=&quot;fa-solid fa-store&quot;></i>'; this.parentElement.querySelector('i').style.display='block';">
+          </span>
+          <span>
+            H&T Store
+            <small>Premium Digital Products</small>
+          </span>
+        </a>
+
+        <nav class="navlinks" aria-label="Primary">
+          <a href="#products"><i class="fa-solid fa-bag-shopping"></i> Produk</a>
+          <a href="#trust"><i class="fa-solid fa-star"></i> Testimoni</a>
+          <a href="#faq"><i class="fa-solid fa-circle-question"></i> FAQ</a>
+          <a href="#contact"><i class="fa-solid fa-phone"></i> Kontak</a>
+        </nav>
+
+        <div class="nav-cta">
+          <a class="btn-ghost" href="#products"><i class="fa-solid fa-magnifying-glass"></i> Cari Produk</a>
+          <a class="btn-primary" id="btnAdminNav" target="_blank" rel="noopener">
+            <i class="fa-brands fa-whatsapp"></i> Chat Admin
+          </a>
+          <a class="btn-primary" id="btnBotNav" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#22c55e,#86efac);">
+            <i class="fa-brands fa-whatsapp"></i> Bot Auto Order
+          </a>
+        </div>
+
+        <button class="burger" id="burger" aria-label="Buka menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+      <div class="mnav" id="mnav">
+        <a href="#products"><i class="fa-solid fa-bag-shopping"></i>&nbsp;&nbsp;Produk</a>
+        <a href="#trust"><i class="fa-solid fa-star"></i>&nbsp;&nbsp;Testimoni</a>
+        <a href="#faq"><i class="fa-solid fa-circle-question"></i>&nbsp;&nbsp;FAQ</a>
+        <a href="#contact"><i class="fa-solid fa-phone"></i>&nbsp;&nbsp;Kontak</a>
+        <a id="btnAdminMnav" target="_blank" rel="noopener">
+          <i class="fa-brands fa-whatsapp"></i>&nbsp;&nbsp;Chat Admin
+        </a>
+        <a id="btnBotMnav" target="_blank" rel="noopener">
+          <i class="fa-brands fa-whatsapp"></i>&nbsp;&nbsp;Bot Auto Order
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-card">
+        <div class="hero-inner">
+
+          <h1><span class="grad">Langganan All App Prem & Digital Products</span><br/></h1>
+          <p>
+            Akses langganan pro + jasa (PPT, infografis, logo, banner, poster, web).
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn-primary" href="#products"><i class="fa-solid fa-cart-shopping"></i> Lihat Katalog</a>
+            <a class="btn-ghost" id="btnBotHero" target="_blank" rel="noopener">
+              <i class="fa-brands fa-whatsapp"></i> Order via Bot
+            </a>
+          </div>
+
+          <div class="hero-badges">
+            <div class="badge"><i class="fa-solid fa-lock"></i> support all payment</div>
+            <div class="badge"><i class="fa-solid fa-headset"></i> Menerima segala pertanyaan</div>
+            <div class="badge"><i class="fa-solid fa-rotate"></i> Banyak pilihan paket tersedia</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="side">
+        <div class="stat">
+          <h3><span class="grad">Kenapa beli di H&T Store?</span></h3>
+          <p>admin ramah, order fast Dengan Bot Order Otomatis, dan pilihan produk Beragam. Cocok buat pelanggan baru maupun langganan.</p>
+          <div class="row">
+            <div class="metric">
+              <b>24/7</b>
+              <span>Transaksi Manual Dengan Admin</span>
+            </div>
+            <div class="metric">
+              <b>Fast</b>
+              <span>Proses order gampang dan cepat</span>
+            </div>
+            <div class="metric">
+              <b>Beroperasi 24/24</b>
+              <span>Transaksi Otomatis Dengan Bot Order WA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stat">
+          <h3><i class="fa-solid fa-bullseye" style="color:var(--primary)"></i> Tips cepat order</h3>
+          <p>
+            Klik <b>Detail</b> untuk lihat paket & harga. Lalu pilih mau <b>Order Admin</b> atau <b>Order Bot</b> → konfirmasi pembayaran → done..
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section class="section" id="products">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Katalog Produk</h2>
+          <p class="section-sub">Cari, filter kategori, ketik nama produk yang kalian cari.</p>
+        </div>
+
+        <div class="controls">
+          <div class="field">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input id="q" type="text" placeholder="Cari: Netflix, Canva, Spotify, dll…" autocomplete="off" />
+            <button id="clearQ" title="Hapus"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+
+          <div class="field">
+            <i class="fa-solid fa-filter"></i>
+            <select id="cat">
+              <option value="all">Semua Kategori</option>
+              <option value="streaming">Streaming</option>
+              <option value="music">Music</option>
+              <option value="editing">Editing/Design</option>
+              <option value="ai">AI</option>
+              <option value="tools">Tools/Produktivitas</option>
+              <option value="other">Lainnya</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <i class="fa-solid fa-arrow-up-wide-short"></i>
+            <select id="sort">
+              <option value="reco">Rekomendasi</option>
+              <option value="az">Nama A → Z</option>
+              <option value="za">Nama Z → A</option>
+              <option value="low">Harga termurah</option>
+              <option value="high">Harga termahal</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="chips" id="chips"></div>
+
+      <div class="grid" id="grid"></div>
+
+      <div class="empty" id="empty">
+        <b>Produk tidak ditemukan.</b><br/>
+        Coba kata kunci lain atau ubah kategori.
+      </div>
+
+      <!-- Trust + FAQ -->
+      <div class="two-col">
+        <div class="box" id="trust">
+          <h3><span class="grad">Testimoni & trusted </span></h3>
+          <p style="margin:0;color:var(--muted);line-height:1.65;">
+            Kamu bisa arahkan pelanggan ke Telegram untuk lihat testimoni. Ini membuatmu lebih yakin sebelum membeli.
+          </p>
+          <div class="quote">
+            <b>“Adminnya fast respon, langsung aktif.”</b><br/>
+            <span>— Pelanggan (contoh testimoni)</span>
+          </div>
+          <div class="quote">
+            <b>“Harga terjangkau, proses cepet.”</b><br/>
+            <span>— Pelanggan (contoh testimoni)</span>
+          </div>
+          <div class="quote" style="border-color:rgba(110,231,255,.22)">
+            <b>Rekomendasi:</b> taruh screenshot testimoni asli di Instagram highlight / Telegram pinned.
+          </div>
+        </div>
+
+        <div class="box" id="faq">
+          <h3><span class="grad">FAQ</span></h3>
+          <details>
+            <summary>Berapa lama prosesnya? <i class="fa-solid fa-chevron-down" style="color:var(--muted2)"></i></summary>
+            <p>Biasanya cepat setelah konfirmasi order di WhatsApp. Untuk jasa desain/joki, tergantung tingkat kesulitan & deadline.</p>
+          </details>
+          <details>
+            <summary>Garansi ada? <i class="fa-solid fa-chevron-down" style="color:var(--muted2)"></i></summary>
+            <p>Ada untuk beberapa produk sesuai ketentuan. Tanyakan admin untuk detail garansi per produk.</p>
+          </details>
+          <details>
+            <summary>Metode pembayaran? <i class="fa-solid fa-chevron-down" style="color:var(--muted2)"></i></summary>
+            <p>Silakan chat admin untuk info metode pembayaran yang tersedia.</p>
+          </details>
+          <details>
+             <summary>Akun sharing/private maksudnya apa? <i class="fa-solid fa-chevron-down" style="color:var(--muted2)"></i></summary>
+            <p>Sharing = dipakai bersama sesuai paket. Private = khusus kamu. Detailnya bisa berbeda per layanan—konfirmasi ke admin.</p>
+          </details>
+          <details>
+            <summary>Cara order lewat Bot gimana? <i class="fa-solid fa-chevron-down" style="color:var(--muted2)"></i></summary>
+            <p>Klik Bot Auto Order → ketik <b>LIST</b> → pilih angka produk → bot kirim detail + cara beli.</p>
+          </details>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Kontak</h2>
+          <p class="section-sub">Pilih channel favoritmu. Klik untuk langsung menuju.</p>
+        </div>
+      </div>
+
+      <div class="contact">
+        <!-- WA ADMIN -->
+        <a href="https://wa.me/6285841218112" target="_blank" rel="noopener">
+          <div class="ic"><i class="fa-brands fa-whatsapp"></i></div>
+          <div>
+            <h4>WhatsApp Admin</h4>
+            <p>Fast Respon 24/7</p>
+          </div>
+        </a>
+
+        <!-- WA BOT AUTO ORDER -->
+        <a href="https://wa.me/6287897294851?text=LIST" target="_blank" rel="noopener">
+          <div class="ic"><i class="fa-brands fa-whatsapp"></i></div>
+          <div>
+            <h4>WhatsApp Bot (Auto Order)</h4>
+            <p>Ketik LIST → pilih angka</p>
+          </div>
+        </a>
+
+        <!-- GROUP WHATSAPP -->
+        <a href="https://chat.whatsapp.com/C9h8uAhCujyF5Wa4d3XzmS" target="_blank" rel="noopener">
+          <div class="ic"><i class="fa-solid fa-users"></i></div>
+          <div>
+            <h4>Group WhatsApp</h4>
+            <p>Komunitas & info promo</p>
+          </div>
+        </a>
+
+        <!-- INSTAGRAM -->
+        <a href="https://www.instagram.com/lyly_st0ree" target="_blank" rel="noopener">
+          <div class="ic"><i class="fa-brands fa-instagram"></i></div>
+          <div>
+            <h4>Instagram</h4>
+            <p>@al_st0reee</p>
+          </div>
+        </a>
+
+        <!-- TELEGRAM -->
+        <a href="https://t.me/lylyst0ree" target="_blank" rel="noopener">
+          <div class="ic"><i class="fa-brands fa-telegram"></i></div>
+          <div>
+            <h4>Telegram</h4>
+            <p>Lihat testimoni</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot">
+      <div>© 2023–2025 <b>H&T Store</b> • Premium Digital Products</div>
+      <div>Made with <span class="heart">♥</span> in Indonesia</div>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Detail Produk">
+      <div class="modal-head">
+        <b id="mTitle">Detail Produk</b>
+        <button class="x" id="mClose" aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-left">
+          <div class="big" id="mVisual"></div>
+
+          <div class="mini-note" id="mNote">
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <b>Tip:</b> Kalau order lewat bot, ketik <b>LIST</b> lalu pilih angka produk.
+            </div>
+          </div>
+
+          <div class="pricebox" id="mPrices"></div>
+        </div>
+        <div class="modal-right">
+          <h2 id="mName">Nama Produk</h2>
+          <p id="mDesc">Deskripsi produk</p>
+
+          <div class="modal-actions">
+            <a class="btn whatsapp" id="mOrderAdmin" target="_blank" rel="noopener">
+              <i class="fa-brands fa-whatsapp"></i> Order Admin
+            </a>
+            <a class="btn bot" id="mOrderBot" target="_blank" rel="noopener">
+              <i class="fa-brands fa-whatsapp"></i> Order via Bot
+            </a>
+            <button class="btn" id="mCopy"><i class="fa-solid fa-copy"></i> Salin Text Order</button>
+          </div>
+
+          <p style="margin-top:12px;color:var(--muted2);font-size:13px;line-height:1.65">
+            Jika ada kendala / pertanyaan, klik menu <b>Kontak</b>. Admin akan bantu pilih paket terbaik.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // =====================
+    // NOMOR WA
+    // =====================
+    const WA_ADMIN = "6285841218112";      // WA Admin (kontak)
+    const WA_ORDER_ADMIN = "6283168725825"; // WA Admin untuk order tombol produk (yang kamu pakai sebelumnya)
+    const WA_BOT = "6287897294851";        // WA Bot Auto Order
+
+    // =====================
+    // DATA (punya kamu)
+    // =====================
+    const products = [
+      {title: 'Canva Pro', desc: 'Desain grafis profesional', logo: 'https://freepnglogo.com/images/all_img/1691829400logo-canva-png.png', prices: [['1 Bulan', '6.000'], ['3 Bulan', '13.000'], ['1 Tahun', '17.000'], ['Lifetime', '20.000']]},
+      {title: 'Jasa Design/Joki', desc: 'Jasa Yang Mempermudah Kalian Jika Tugas Menumpuk', logo: 'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/199815619/original/f3246834c4767a44a7046affac52ca7e4a60578e/design-unique-brand-build-identity-logo.jpg', prices: [['PPT Per Slide', '3.000'],['1 Poster', '30.000'], ['1 Banner', '30.000'], ['1 Logo', '30.000'], ['Web Sederhana', '50.000']]},
+      {title: 'Netflix Premium', desc: 'Streaming film dan series 4K', logo: 'https://images.ctfassets.net/wt70guc1rpin/4J5l85tSYUWxfT0zj90Wai/06c55d490990e65f62d0e8384526e09c/letterform_logo.jpeg', prices: [['Semipriv', '35.000/bln'], ['1p1u', '30.000/bln'], ['1p2u', '20.000/bln']]},
+      {title: 'CapCut Premium', desc: 'Edit video profesional', logo: 'https://vectorseek.com/wp-content/uploads/2023/07/png-capcut-logo.png', prices: [['1 Bulan Private', '35.000'], ['1 Bulan 2u', '27.000'], ['7 Hari Private', '11.000']]},
+      {title: 'ChatGPT Premium', desc: 'AI dengan model terbaru', logo: 'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg', prices: [['gpt go 1 Bulan', '28.000'], ['gpt plus 1 bulan', '35.000']]},
+      {title: 'Gemini Pro + 5 Drive TB', desc: 'AI dengan model VEO terbaru', logo: 'https://rocket.domains/wp-content/uploads/2024/03/Gemini-AI-Logo.png', prices: [['Gemini Pro 1 thn', '30.000'], ['Gemini Pro 1 Bulan', '18.000']]},
+      {title: 'YouTube Premium', desc: 'Tanpa iklan & offline', logo: 'https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg', prices: [['Indplan', '9.000/bln'], ['Family Slot', '6.000/bln']]},
+      {title: 'Dramabox', desc: 'Drama favorit tanpa batas', logo: 'https://play-lh.googleusercontent.com/dYAF42EhNGgGhC7nLHNSZkWs11W5Dv0mRWZBv6IgLDTh3l8eolsjeAVGg-HVHt9YWyA', prices: [['1 Bulan Sharing', '15.000']]},
+      {title: 'Alight Motion', desc: 'Edit video animasi profesional', logo: 'https://freepnglogo.com/images/all_img/1691819804alight-motion-logo-png.png', prices: [['1 Tahun Sharing', '4.000'], ['1 Tahun Private', '7.000']]},
+      {title: 'Apple Music', desc: 'Streaming musik berkualitas', logo: 'https://freepnglogo.com/images/all_img/apple-music-logo-png-e0aa.png', prices: [['1 Bulan famplan', '10.000'], ['1 bulan head', '16.000']]},
+      {title: 'Spotify Premium', desc: 'Musik tanpa iklan', logo: 'https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg', prices: [['1 Bulan Indplan', '20.000'], ['1 Bulan Family', '22.000']]},
+      {title: 'VIU Premium', desc: 'Drama Asia terlengkap', logo: 'https://is1-ssl.mzstatic.com/image/thumb/Purple124/v4/7d/5b/e9/7d5be933-a76a-cce4-3380-5360f16e444d/AppIcon-0-0-1x_U007emarketing-0-0-0-4-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/512x512bb.jpg', prices: [['1 Bulan Private', '8.000'], ['1 Tahun Private', '15.000'], ['Lifetime', '18.000']]},
+      {title: 'WeTV Premium', desc: 'Drama & variety show', logo: 'https://tse3.mm.bing.net/th/id/OIP.E_VVzxIU-Q2P_uBbhPJbEAHaHa?w=1024&h=1024&rs=1&pid=ImgDetMain&o=7&rm=3', prices: [['1 Bulan 6u', '10.000'], ['1 Bulan 3u', '18.000'], ['1 Bulan Private', '40.000']]},
+      {title: 'Reelshort VIP', desc: 'Drama Pendek', logo: 'https://cdn.aptoide.com/imgs/7/7/8/778d6297e5e50c6d57fd830979071692_icon.png', prices: [['1 Bulan Sharing', '15.000']]},
+      {title: 'Bstation Premium', desc: 'Streaming Anime', logo: 'https://play-lh.googleusercontent.com/nug7F0n-jWMpAWLaU7Qi1kuTIYjrAtUJmZd5FW4mEyspYR7-zGa-3_fwnYkPgyzHozE3', prices: [['1 Bulan Sharing', '8.000'], ['1 Tahun Sharing', '18.000']]},
+      {title: 'Microsoft 365', desc: 'Editing makalah dengan lebih leluasa', logo: 'https://iconlogovector.com/uploads/images/2023/03/lg-0438cfb397d95751203ce73d7a6dcd3e30.jpg', prices: [['1 Bulan Acc Seller', '10.000'], ['1 Bulan Acc buyer', '15.000']]},
+      {title: 'Zoom Premium', desc: 'Zoom dengan lebih profesional', logo: 'https://wallpapers.com/images/hd/zoom-pictures-xyphlin0b1cgb1fd.jpg', prices: [['14 hari', '8.000'],['1 Bulan Private', '15.000']]},
+      {title: 'iQIYI Premium', desc: 'Konten Asia berkualitas', logo: 'https://play-lh.googleusercontent.com/L40FnQ8nF8zRtUdALz9b23JirsxYA5-0_fkRUlFBMymud09ctBCFrNui4l-ES_V6Uw', prices: [['1 Bulan Standar', '7.000'], ['1 Tahun Standar', '17.000'], ['1 Bulan Premium', '8.000'], ['1 Tahun Premium', '18..000']]},
+      {title: 'Prime Video', desc: 'Amazon Original', logo: 'https://www.altibox.no/wp-content/uploads/2022/08/prime-vidoe.png', prices: [['1 Bulan Sharing 3u', '9.000'], ['1 Bulan Private', '  18.000']]},
+      {title: 'Picsart Premium', desc: 'Edit foto & desain', logo: 'https://vectorseek.com/wp-content/uploads/2023/08/Picsart-Icon-Logo-Vector.svg-.png', prices: [['1 Bulan Sharing', '6.000'], ['1 Bulan Private', '12.000']]},
+      {title: 'Youku Premium', desc: 'Streaming dari China', logo: 'https://play-lh.googleusercontent.com/tCS-GBn1rQC-3gd84ssXFTmBFl_8VAYnj8l4BDrQdsCeDkddcbhLxDlyr5shrMC9r5I=w220', prices: [['1 Bulan', '8.000'], ['3 Bulan', '15.000'], ['1 Tahun', '18.000']]},
+      {title: 'Moviebox Premium', desc: 'Film & series lengkap', logo: 'https://4.bp.blogspot.com/-VwY4NjwtT8c/Ur2z9FxhEcI/AAAAAAAADV4/aOWTN6piF-I/s1600/Movie+Box.png', prices: [['1 Bulan Android', '8.000'], ['1 Bulan iOS', '10.000'], ['1 Tahun Android', '18.000']]},
+      {title: 'Wink Premium', desc: 'Platform hiburan', logo: 'https://tse4.mm.bing.net/th/id/OIP.SsLG2P4ZubuTFF_X-LC0jQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3', prices: [['7 Hari 2u', '8.000'], ['7 Hari Private', '13.000']]},
+      {title: 'Fizzo Premium', desc: 'hiburan', logo: 'https://tse2.mm.bing.net/th/id/OIP.jAyURSHnB5HUPvBmcu14JgAAAA?rs=1&pid=ImgDetMain&o=7&rm=3', prices: [['1 Bulan Sharing', '10.000']]},
+      {title: 'Getcontact Premium', desc: 'Cek Nomer Dan Terhindar Dari Penipuan', logo: 'https://free-png.ru/wp-content/uploads/2021/11/free-png.ru-488.png', prices: [['1 Bulan', '10.000'], ['Cek 1 Nomer', '1000']]},
+      {title: 'Wattpad Premium', desc: 'Baca cerita tanpa iklan', logo: 'https://cdn-icons-png.flaticon.com/512/3992/3992005.png', prices: [['1 Bulan', '8.000'], ['1 Tahun', '16.000']]},
+      {title: 'Vidio Premium', desc: 'TV & sport Indonesia', logo: 'https://cdn.freelogovectors.net/wp-content/uploads/2021/12/vidio-logo-freelogovectors.net_-400x400.png', prices: [['1 Bulan 2u All Device', '24.000'], ['1 Bulan Private All Device', '37.000'], ['1 Bulan 2u Mobile', '18.000'], ['1 Bulan Private Mobile', '25.000'], ['Only TV 1 Tahun', '12.000']]},
+      {title: 'Loklok Premium', desc: 'Drama & film Asia', logo: 'https://loklokapkk.com/wp-content/uploads/2024/12/logo-table-new-1.webp', prices: [['1 Bulan 3u Android', '24.000'], ['1 Bulan 5u TV', '21.000']]},
+      {title: 'HBO Max', desc: 'Series blockbuster', logo: 'https://www.gloryofthesnow.com/wp-content/uploads/2022/05/HBO-Max-Black.png', prices: [['1 Bulan Ultimate Sharing', '20.000'], ['1 Bulan Standar Sharing', '15.000']]},
+      {title: 'Wibuku Premium', desc: 'Streaming Anime', logo: 'https://play-lh.googleusercontent.com/EAVnwk0BS5chgGbygHiIYu2w5OLx54GdXDZQBsdLM4rU_xZ86fPjBmLAljN9wARvmvxA', prices: [['1 Tahun Sharing', '16.000']]},
+      {title: 'Lightroom Premium', desc: 'Edit foto profesional', logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b6/Adobe_Photoshop_Lightroom_CC_logo.svg', prices: [['1 Tahun Sharing', '20.000']]},
+      {title: 'Meitu Premium', desc: 'Edit foto dengan AI', logo: 'https://getmodsapk.com/storage/Meitu%20MOD%20APK0.png', prices: [['1 Bulan 3u', '20.000']]},
+      {title: 'Vision Premium', desc: 'Sport & entertainment', logo: 'https://mir-s3-cdn-cf.behance.net/projects/max_808/35b05093008279.Y3JvcCwxNDg2LDExNjIsNDk2LDUxNQ.jpg', prices: [['Timnas & Bein Pay TV 1 Bulan', '20.000'], ['Ultimate Premium', '60.000']]}
+    ];
+
+    // =====================
+    // HELPERS
+    // =====================
+    const formatRp = (s) => String(s).trim();
+    const normalize = (txt) => (txt || "").toLowerCase().trim();
+
+    const guessCategory = (title, desc) => {
+      const t = normalize(title + " " + desc);
+      if (/(netflix|youtube|viu|wetv|iqiyi|prime|vidio|hbo|max|movie|drama|loklok|youku|wibuku|bstation|dramabox)/.test(t)) return "streaming";
+      if (/(spotify|apple music)/.test(t)) return "music";
+      if (/(canva|capcut|alight|picsart|lightroom|meitu|design|joki|ppt|logo|banner|poster)/.test(t)) return "editing";
+      if (/(chatgpt|gemini|ai|veo)/.test(t)) return "ai";
+      if (/(microsoft|365|zoom|getcontact)/.test(t)) return "tools";
+      return "other";
+    };
+
+    const minPriceValue = (prices) => {
+      let min = Infinity;
+      for (const [, val] of prices || []) {
+        const clean = String(val).replace(/[^\d]/g, "");
+        if (!clean) continue;
+        const n = Number(clean);
+        if (!Number.isNaN(n)) min = Math.min(min, n);
+      }
+      return min === Infinity ? 0 : min;
+    };
+
+    const enriched = products.map((p, idx) => ({
+      ...p,
+      id: idx + 1,
+      cat: guessCategory(p.title, p.desc),
+      min: minPriceValue(p.prices),
+      featured: /canva|netflix|chatgpt|youtube|capcut|dramabox/i.test(p.title)
+    }));
+
+    // =====================
+    // UI REFERENCES
+    // =====================
+    const grid = document.getElementById("grid");
+    const empty = document.getElementById("empty");
+    const q = document.getElementById("q");
+    const clearQ = document.getElementById("clearQ");
+    const cat = document.getElementById("cat");
+    const sort = document.getElementById("sort");
+    const chips = document.getElementById("chips");
+
+    // Modal
+    const modal = document.getElementById("modal");
+    const mClose = document.getElementById("mClose");
+    const mTitle = document.getElementById("mTitle");
+    const mName = document.getElementById("mName");
+    const mDesc = document.getElementById("mDesc");
+    const mPrices = document.getElementById("mPrices");
+    const mVisual = document.getElementById("mVisual");
+    const mOrderAdmin = document.getElementById("mOrderAdmin");
+    const mOrderBot = document.getElementById("mOrderBot");
+    const mCopy = document.getElementById("mCopy");
+
+    // Topbar copy WA
+    const btnCopyWA = document.getElementById("btnCopyWA");
+
+    // Mobile nav
+    const burger = document.getElementById("burger");
+    const mnav = document.getElementById("mnav");
+
+    burger.addEventListener("click", () => {
+      mnav.classList.toggle("active");
+      burger.innerHTML = mnav.classList.contains("active")
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+    });
+
+    // Set links (nav buttons)
+    const botLink = `https://wa.me/${WA_BOT}?text=${encodeURIComponent("LIST")}`;
+    const adminNavLink = `https://wa.me/${WA_ORDER_ADMIN}`;
+
+    document.getElementById("btnAdminNav").href = adminNavLink;
+    document.getElementById("btnBotNav").href = botLink;
+    document.getElementById("btnAdminMnav").href = adminNavLink;
+    document.getElementById("btnBotMnav").href = botLink;
+    document.getElementById("btnBotHero").href = botLink;
+
+    // Chips
+    const chipDefs = [
+      { key: "all", label: "Semua", icon: "fa-border-all" },
+      { key: "streaming", label: "Streaming", icon: "fa-film" },
+      { key: "music", label: "Music", icon: "fa-music" },
+      { key: "editing", label: "Editing/Design", icon: "fa-pen-nib" },
+      { key: "ai", label: "AI", icon: "fa-wand-magic-sparkles" },
+      { key: "tools", label: "Tools", icon: "fa-screwdriver-wrench" },
+      { key: "other", label: "Lainnya", icon: "fa-ellipsis" }
+    ];
+
+    function renderChips(active = "all"){
+      chips.innerHTML = chipDefs.map(c => `
+        <button class="chip ${c.key === active ? "active" : ""}" data-chip="${c.key}">
+          <i class="fa-solid ${c.icon}"></i> ${c.label}
+        </button>
+      `).join("");
+      chips.querySelectorAll(".chip").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const k = btn.getAttribute("data-chip");
+          cat.value = k;
+          renderChips(k);
+          apply();
+        });
+      });
+    }
+
+    function cardTemplate(p){
+      const badge = p.featured ? `<span class="tag"><i class="fa-solid fa-fire"></i> Best Seller</span>` : "";
+
+      const orderText = `Halo, saya mau order ${p.title}. Paket yang saya pilih: (tulis paket).`;
+      const waAdmin = `https://wa.me/${WA_ORDER_ADMIN}?text=${encodeURIComponent(orderText)}`;
+
+      // Bot: default "LIST" sesuai alur bot kamu
+      const waBot = `https://wa.me/${WA_BOT}?text=${encodeURIComponent("LIST")}`;
+
+      const rows = (p.prices || []).slice(0, 4).map(pr => `
+        <div class="price-row">
+          <small>${pr[0]}</small>
+          <b>Rp ${formatRp(pr[1])}</b>
+        </div>
+      `).join("");
+
+      const img = p.logo
+        ? `<img class="logo" src="${p.logo}" alt="${p.title}" loading="lazy" onerror="this.replaceWith((() => { const d=document.createElement('div'); d.className='fallback'; d.innerHTML='<i class=\\'fa-solid fa-box\\'></i>'; return d; })())">`
+        : `<div class="fallback"><i class="fa-solid fa-box"></i></div>`;
+
+      return `
+        <article class="card" data-id="${p.id}">
+          <div class="card-top">
+            ${badge}
+            ${img}
+          </div>
+          <div class="card-body">
+            <h3 class="title">${p.title}</h3>
+            <p class="desc">${p.desc}</p>
+
+            <div class="pricebox">
+              ${rows}
+            </div>
+
+            <div class="card-actions">
+              <button class="btn" data-detail="${p.id}">
+                <i class="fa-solid fa-circle-info"></i> Detail
+              </button>
+
+              <a class="btn whatsapp" href="${waAdmin}" target="_blank" rel="noopener">
+                <i class="fa-brands fa-whatsapp"></i> Admin
+              </a>
+
+              <a class="btn bot" href="${waBot}" target="_blank" rel="noopener">
+                <i class="fa-brands fa-whatsapp"></i> Bot
+              </a>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function render(list){
+      grid.innerHTML = list.map(cardTemplate).join("");
+      empty.classList.toggle("active", list.length === 0);
+
+      grid.querySelectorAll("[data-detail]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const id = Number(btn.getAttribute("data-detail"));
+          openModal(id);
+        });
+      });
+    }
+
+    function openModal(id){
+      const p = enriched.find(x => x.id === id);
+      if(!p) return;
+
+      const orderText = `Halo, saya mau order ${p.title}. Paket yang saya pilih: (tulis paket).`;
+      const waAdmin = `https://wa.me/${WA_ORDER_ADMIN}?text=${encodeURIComponent(orderText)}`;
+      const waBot = `https://wa.me/${WA_BOT}?text=${encodeURIComponent("LIST")}`;
+
+      mTitle.textContent = "Detail Produk";
+      mName.textContent = p.title;
+      mDesc.textContent = p.desc;
+
+      if (p.logo) {
+        mVisual.innerHTML = `<img src="${p.logo}" alt="${p.title}" onerror="this.remove();">`;
+      } else {
+        mVisual.innerHTML = `<div class="fallback"><i class="fa-solid fa-box"></i></div>`;
+      }
+
+      mPrices.innerHTML = `
+        ${(p.prices||[]).map(pr => `
+          <div class="price-row">
+            <small>${pr[0]}</small>
+            <b>Rp ${formatRp(pr[1])}</b>
+          </div>
+        `).join("")}
+      `;
+
+      mOrderAdmin.setAttribute("href", waAdmin);
+      mOrderBot.setAttribute("href", waBot);
+
+      mCopy.onclick = async () => {
+        try{
+          await navigator.clipboard.writeText(orderText);
+          mCopy.innerHTML = '<i class="fa-solid fa-check"></i> Tersalin';
+          setTimeout(() => mCopy.innerHTML = '<i class="fa-solid fa-copy"></i> Salin Text Order', 1400);
+        }catch(e){
+          alert("Gagal menyalin. Copy manual:\n\n" + orderText);
+        }
+      };
+
+      modal.classList.add("active");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal(){
+      modal.classList.remove("active");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+    mClose.addEventListener("click", closeModal);
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.classList.contains("active")) closeModal();
+    });
+
+    function apply(){
+      const term = normalize(q.value);
+      const catVal = cat.value;
+
+      let list = enriched.filter(p => {
+        const hay = normalize(p.title + " " + p.desc + " " + (p.prices||[]).flat().join(" "));
+        const matchesTerm = term ? hay.includes(term) : true;
+        const matchesCat = (catVal === "all") ? true : p.cat === catVal;
+        return matchesTerm && matchesCat;
+      });
+
+      switch(sort.value){
+        case "az": list.sort((a,b) => a.title.localeCompare(b.title)); break;
+        case "za": list.sort((a,b) => b.title.localeCompare(a.title)); break;
+        case "low": list.sort((a,b) => a.min - b.min); break;
+        case "high": list.sort((a,b) => b.min - a.min); break;
+        default:
+          list.sort((a,b) => (Number(b.featured)-Number(a.featured)) || (a.min - b.min));
+      }
+
+      render(list);
+    }
+
+    q.addEventListener("input", () => apply());
+    cat.addEventListener("change", () => {
+      renderChips(cat.value);
+      apply();
+    });
+    sort.addEventListener("change", apply);
+
+    clearQ.addEventListener("click", () => {
+      q.value = "";
+      q.focus();
+      apply();
+    });
+
+    btnCopyWA?.addEventListener("click", async () => {
+      const text = "+" + WA_ORDER_ADMIN;
+      try{
+        await navigator.clipboard.writeText(text);
+        btnCopyWA.innerHTML = '<i class="fa-solid fa-check"></i> Tersalin';
+        setTimeout(() => btnCopyWA.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Salin Nomor Admin', 1400);
+      }catch(e){
+        alert("Gagal menyalin. Nomor WA Admin: " + text);
+      }
+    });
+
+    // Init
+    renderChips("all");
+    apply();
+  </script>
+</body>
+</html>

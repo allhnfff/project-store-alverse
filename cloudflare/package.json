@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "miniflare": "^3.20250718.3"
+  }
+}

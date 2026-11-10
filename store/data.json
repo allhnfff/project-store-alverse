@@ -1,0 +1,750 @@
+{
+ "store": {
+  "name": "AL STORE",
+  "tagline": "",
+  "logoAsset": "b2860571a0f49cdad1a5f010f6bc51d0",
+  "heroTitle": "Premium App Subscription & Jasa Desain.",
+  "heroLead": "",
+  "facts": [
+   "Bot order aktif 24 jam",
+   "Admin bantu pilih paket",
+   "Melayani sejak 2023"
+  ],
+  "since": 2023
+ },
+ "contact": {
+  "waAdmin": "6285841218112",
+  "waOrder": "6283168725825",
+  "waBot": "6287897294851",
+  "botText": "LIST",
+  "group": "https://chat.whatsapp.com/C9h8uAhCujyF5Wa4d3XzmS",
+  "instagramUrl": "https://www.instagram.com/alveersse",
+  "instagramLabel": "@alveersse",
+  "telegramUrl": "https://t.me/al_markett"
+ },
+ "products": [
+  {
+   "id": "p1",
+   "title": "Canva Pro",
+   "desc": "",
+   "cat": "editing",
+   "featured": true,
+   "hidden": false,
+   "logo": "https://freepnglogo.com/images/all_img/1691829400logo-canva-png.png",
+   "logoAsset": "c2708cb2d700b824720128df7b8ed067",
+   "prices": [
+    [
+     "1 Bulan",
+     "6.000"
+    ],
+    [
+     "3 Bulan",
+     "13.000"
+    ],
+    [
+     "1 Tahun",
+     "17.000"
+    ],
+    [
+     "Lifetime",
+     "20.000"
+    ]
+   ]
+  },
+  {
+   "id": "p7",
+   "title": "YouTube Premium",
+   "desc": "",
+   "cat": "streaming",
+   "featured": true,
+   "hidden": false,
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg",
+   "logoAsset": "1edd6e6513ce9da239035b938aa35ed4",
+   "prices": [
+    [
+     "Indplan",
+     "9.000/bln"
+    ],
+    [
+     "Family Slot",
+     "6.000/bln"
+    ]
+   ]
+  },
+  {
+   "id": "p4",
+   "title": "CapCut Premium",
+   "desc": "",
+   "cat": "editing",
+   "featured": true,
+   "hidden": false,
+   "logo": "https://vectorseek.com/wp-content/uploads/2023/07/png-capcut-logo.png",
+   "logoAsset": "75edce62d49875382305553857b0ea13",
+   "prices": [
+    [
+     "1 Bulan Private",
+     "35.000"
+    ],
+    [
+     "1 Bulan 2u",
+     "27.000"
+    ],
+    [
+     "7 Hari Private",
+     "11.000"
+    ]
+   ]
+  },
+  {
+   "id": "p8",
+   "title": "Dramabox",
+   "desc": "",
+   "cat": "streaming",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://play-lh.googleusercontent.com/dYAF42EhNGgGhC7nLHNSZkWs11W5Dv0mRWZBv6IgLDTh3l8eolsjeAVGg-HVHt9YWyA",
+   "logoAsset": "089073790810dae9cd35cc8bbe8c8644",
+   "prices": [
+    [
+     "1 Bulan Sharing",
+     "15.000"
+    ]
+   ]
+  },
+  {
+   "id": "p3",
+   "title": "Netflix Premium",
+   "desc": "",
+   "cat": "streaming",
+   "featured": true,
+   "hidden": false,
+   "logo": "https://images.ctfassets.net/wt70guc1rpin/4J5l85tSYUWxfT0zj90Wai/06c55d490990e65f62d0e8384526e09c/letterform_logo.jpeg",
+   "logoAsset": "82f4fce0fbee31c58000f25151e0844d",
+   "prices": [
+    [
+     "Semipriv",
+     "35.000/bln"
+    ],
+    [
+     "1p1u",
+     "30.000/bln"
+    ],
+    [
+     "1p2u",
+     "20.000/bln"
+    ]
+   ]
+  },
+  {
+   "id": "p5",
+   "title": "ChatGPT Premium",
+   "desc": "",
+   "cat": "ai",
+   "featured": true,
+   "hidden": false,
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
+   "logoAsset": "661091dfe648e85abebd115a236997ea",
+   "prices": [
+    [
+     "gpt go 1 Bulan",
+     "28.000"
+    ],
+    [
+     "gpt plus 1 bulan",
+     "35.000"
+    ]
+   ]
+  },
+  {
+   "id": "p25",
+   "title": "Getcontact Premium",
+   "desc": "",
+   "cat": "tools",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://free-png.ru/wp-content/uploads/2021/11/free-png.ru-488.png",
+   "logoAsset": "23381ca30785abcdcd0767abe84d4ff7",
+   "prices": [
+    [
+     "1 Bulan",
+     "10.000"
+    ],
+    [
+     "Cek 1 Nomer",
+     "1000"
+    ]
+   ]
+  },
+  {
+   "id": "p2",
+   "title": "Jasa Design",
+   "desc": "",
+   "cat": "editing",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/199815619/original/f3246834c4767a44a7046affac52ca7e4a60578e/design-unique-brand-build-identity-logo.jpg",
+   "logoAsset": "3b49b6f92ac58936d80445cfaf73027a",
+   "prices": [
+    [
+     "PPT Per Slide",
+     "3.000"
+    ],
+    [
+     "1 Poster",
+     "15.000-50.000"
+    ],
+    [
+     "1 Banner",
+     "15.000-50.000"
+    ],
+    [
+     "1 Logo",
+     "15.000-50.000"
+    ],
+    [
+     "Web Sederhana",
+     "15.000-50.000"
+    ]
+   ]
+  },
+  {
+   "id": "p9",
+   "title": "Alight Motion",
+   "desc": "",
+   "cat": "editing",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://freepnglogo.com/images/all_img/1691819804alight-motion-logo-png.png",
+   "logoAsset": "48ffc1fc96d2bf994dad22a4aeb0f970",
+   "prices": [
+    [
+     "1 Tahun Sharing",
+     "4.000"
+    ],
+    [
+     "1 Tahun Private",
+     "7.000"
+    ]
+   ]
+  },
+  {
+   "id": "p20",
+   "title": "Picsart Premium",
+   "desc": "",
+   "cat": "editing",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://vectorseek.com/wp-content/uploads/2023/08/Picsart-Icon-Logo-Vector.svg-.png",
+   "logoAsset": "93b07ccde58138bf31a1f32ac56f98ba",
+   "prices": [
+    [
+     "1 Bulan Sharing",
+     "6.000"
+    ],
+    [
+     "1 Bulan Private",
+     "12.000"
+    ]
+   ]
+  },
+  {
+   "id": "p18",
+   "title": "iQIYI Premium",
+   "desc": "",
+   "cat": "streaming",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://play-lh.googleusercontent.com/L40FnQ8nF8zRtUdALz9b23JirsxYA5-0_fkRUlFBMymud09ctBCFrNui4l-ES_V6Uw",
+   "logoAsset": "789de708ed07dee5f88eb7c26a480219",
+   "prices": [
+    [
+     "1 Bulan Standar",
+     "7.000"
+    ],
+    [
+     "1 Tahun Standar",
+     "17.000"
+    ],
+    [
+     "1 Bulan Premium",
+     "8.000"
+    ],
+    [
+     "1 Tahun Premium",
+     "18..000"
+    ]
+   ]
+  },
+  {
+   "id": "p12",
+   "title": "VIU Premium",
+   "desc": "",
+   "cat": "streaming",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple124/v4/7d/5b/e9/7d5be933-a76a-cce4-3380-5360f16e444d/AppIcon-0-0-1x_U007emarketing-0-0-0-4-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/512x512bb.jpg",
+   "logoAsset": "808b3b9779c450d0791f647eacadc8fd",
+   "prices": [
+    [
+     "1 Bulan Private",
+     "8.000"
+    ],
+    [
+     "1 Tahun Private",
+     "15.000"
+    ],
+    [
+     "Lifetime",
+     "18.000"
+    ]
+   ]
+  },
+  {
+   "id": "p15",
+   "title": "Bstation Premium",
+   "desc": "",
+   "cat": "streaming",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://play-lh.googleusercontent.com/nug7F0n-jWMpAWLaU7Qi1kuTIYjrAtUJmZd5FW4mEyspYR7-zGa-3_fwnYkPgyzHozE3",
+   "logoAsset": "518c6af44192fcc43e043f85f9bea565",
+   "prices": [
+    [
+     "1 Bulan Sharing",
+     "8.000"
+    ],
+    [
+     "1 Tahun Sharing",
+     "18.000"
+    ]
+   ]
+  },
+  {
+   "id": "p17",
+   "title": "Zoom Premium",
+   "desc": "",
+   "cat": "tools",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://wallpapers.com/images/hd/zoom-pictures-xyphlin0b1cgb1fd.jpg",
+   "logoAsset": "7b2fc40752213566092b2d891dbc475b",
+   "prices": [
+    [
+     "14 hari",
+     "8.000"
+    ],
+    [
+     "1 Bulan Private",
+     "15.000"
+    ]
+   ]
+  },
+  {
+   "id": "p21",
+   "title": "Youku Premium",
+   "desc": "",
+   "cat": "streaming",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://play-lh.googleusercontent.com/tCS-GBn1rQC-3gd84ssXFTmBFl_8VAYnj8l4BDrQdsCeDkddcbhLxDlyr5shrMC9r5I=w220",
+   "logoAsset": "158e56d639a7e6a149fae2fe77f5b2f9",
+   "prices": [
+    [
+     "1 Bulan",
+     "8.000"
+    ],
+    [
+     "3 Bulan",
+     "15.000"
+    ],
+    [
+     "1 Tahun",
+     "18.000"
+    ]
+   ]
+  },
+  {
+   "id": "p22",
+   "title": "Moviebox Premium",
+   "desc": "",
+   "cat": "streaming",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://4.bp.blogspot.com/-VwY4NjwtT8c/Ur2z9FxhEcI/AAAAAAAADV4/aOWTN6piF-I/s1600/Movie+Box.png",
+   "logoAsset": "fa79858bd92a4df58e425d0d5faf4b55",
+   "prices": [
+    [
+     "1 Bulan Android",
+     "8.000"
+    ],
+    [
+     "1 Bulan iOS",
+     "10.000"
+    ],
+    [
+     "1 Tahun Android",
+     "18.000"
+    ]
+   ]
+  },
+  {
+   "id": "p23",
+   "title": "Wink Premium",
+   "desc": "",
+   "cat": "editing",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://tse4.mm.bing.net/th/id/OIP.SsLG2P4ZubuTFF_X-LC0jQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+   "logoAsset": "35db539e125d1cffe5f7401ab1ebe2a6",
+   "prices": [
+    [
+     "7 Hari 2u",
+     "8.000"
+    ],
+    [
+     "7 Hari Private",
+     "13.000"
+    ]
+   ]
+  },
+  {
+   "id": "p26",
+   "title": "Wattpad Premium",
+   "desc": "",
+   "cat": "other",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://cdn-icons-png.flaticon.com/512/3992/3992005.png",
+   "logoAsset": "8f04b730313143ba5615ebc642ec331f",
+   "prices": [
+    [
+     "1 Bulan",
+     "8.000"
+    ],
+    [
+     "1 Tahun",
+     "16.000"
+    ]
+   ]
+  },
+  {
+   "id": "p19",
+   "title": "Prime Video",
+   "desc": "",
+   "cat": "streaming",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://www.altibox.no/wp-content/uploads/2022/08/prime-vidoe.png",
+   "logoAsset": "41e2148c6c1399addf44f2d648ff3eeb",
+   "prices": [
+    [
+     "1 Bulan Sharing 3u",
+     "9.000"
+    ],
+    [
+     "1 Bulan Private",
+     "18.000"
+    ]
+   ]
+  },
+  {
+   "id": "p10",
+   "title": "Apple Music",
+   "desc": "",
+   "cat": "music",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://freepnglogo.com/images/all_img/apple-music-logo-png-e0aa.png",
+   "logoAsset": "40c01b1da85ecd8dee5911c479042bec",
+   "prices": [
+    [
+     "1 Bulan famplan",
+     "10.000"
+    ],
+    [
+     "1 bulan head",
+     "16.000"
+    ]
+   ]
+  },
+  {
+   "id": "p13",
+   "title": "WeTV Premium",
+   "desc": "",
+   "cat": "streaming",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://tse3.mm.bing.net/th/id/OIP.E_VVzxIU-Q2P_uBbhPJbEAHaHa?w=1024&h=1024&rs=1&pid=ImgDetMain&o=7&rm=3",
+   "logoAsset": "3bb08ea76ffbe0614117f6f1bf613f47",
+   "prices": [
+    [
+     "1 Bulan 6u",
+     "10.000"
+    ],
+    [
+     "1 Bulan 3u",
+     "18.000"
+    ],
+    [
+     "1 Bulan Private",
+     "40.000"
+    ]
+   ]
+  },
+  {
+   "id": "p16",
+   "title": "Microsoft 365",
+   "desc": "",
+   "cat": "tools",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://iconlogovector.com/uploads/images/2023/03/lg-0438cfb397d95751203ce73d7a6dcd3e30.jpg",
+   "logoAsset": "bcefe98b2bb0c36cd622f21977f3e31a",
+   "prices": [
+    [
+     "1 Bulan Acc Seller",
+     "10.000"
+    ],
+    [
+     "1 Bulan Acc buyer",
+     "15.000"
+    ]
+   ]
+  },
+  {
+   "id": "p24",
+   "title": "Fizzo Premium",
+   "desc": "",
+   "cat": "other",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://tse2.mm.bing.net/th/id/OIP.jAyURSHnB5HUPvBmcu14JgAAAA?rs=1&pid=ImgDetMain&o=7&rm=3",
+   "logoAsset": "962f953f8685a953b9c06e32250cd53c",
+   "prices": [
+    [
+     "1 Bulan Sharing",
+     "10.000"
+    ]
+   ]
+  },
+  {
+   "id": "p27",
+   "title": "Vidio Premium",
+   "desc": "",
+   "cat": "streaming",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://cdn.freelogovectors.net/wp-content/uploads/2021/12/vidio-logo-freelogovectors.net_-400x400.png",
+   "logoAsset": "0570ae56f990d38923a59a4c0e544baf",
+   "prices": [
+    [
+     "1 Bulan 2u All Device",
+     "24.000"
+    ],
+    [
+     "1 Bulan Private All Device",
+     "37.000"
+    ],
+    [
+     "1 Bulan 2u Mobile",
+     "18.000"
+    ],
+    [
+     "1 Bulan Private Mobile",
+     "25.000"
+    ],
+    [
+     "Only TV 1 Tahun",
+     "12.000"
+    ]
+   ]
+  },
+  {
+   "id": "p14",
+   "title": "Reelshort VIP",
+   "desc": "",
+   "cat": "streaming",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://cdn.aptoide.com/imgs/7/7/8/778d6297e5e50c6d57fd830979071692_icon.png",
+   "logoAsset": "138f554f136a7f909eb2acbe89e839e2",
+   "prices": [
+    [
+     "1 Bulan Sharing",
+     "15.000"
+    ]
+   ]
+  },
+  {
+   "id": "p29",
+   "title": "HBO Max",
+   "desc": "",
+   "cat": "streaming",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://www.gloryofthesnow.com/wp-content/uploads/2022/05/HBO-Max-Black.png",
+   "logoAsset": "057a06c52278791011e3db63d4021621",
+   "prices": [
+    [
+     "1 Bulan Ultimate Sharing",
+     "20.000"
+    ],
+    [
+     "1 Bulan Standar Sharing",
+     "15.000"
+    ]
+   ]
+  },
+  {
+   "id": "p30",
+   "title": "Wibuku Premium",
+   "desc": "",
+   "cat": "streaming",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://play-lh.googleusercontent.com/EAVnwk0BS5chgGbygHiIYu2w5OLx54GdXDZQBsdLM4rU_xZ86fPjBmLAljN9wARvmvxA",
+   "logoAsset": "2f525591e567f187f9faf7f12362bcfc",
+   "prices": [
+    [
+     "1 Tahun Sharing",
+     "16.000"
+    ]
+   ]
+  },
+  {
+   "id": "p6",
+   "title": "Gemini Pro + 5 Drive TB",
+   "desc": "",
+   "cat": "ai",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://rocket.domains/wp-content/uploads/2024/03/Gemini-AI-Logo.png",
+   "logoAsset": "2a4738062231e7eff84621dddb126334",
+   "prices": [
+    [
+     "Gemini Pro 1 thn",
+     "30.000"
+    ],
+    [
+     "Gemini Pro 1 Bulan",
+     "18.000"
+    ]
+   ]
+  },
+  {
+   "id": "p11",
+   "title": "Spotify Premium",
+   "desc": "",
+   "cat": "music",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg",
+   "logoAsset": "44b9547c01518772fce0a512e3a7e376",
+   "prices": [
+    [
+     "1 Bulan Indplan",
+     "20.000"
+    ],
+    [
+     "1 Bulan Family",
+     "22.000"
+    ]
+   ]
+  },
+  {
+   "id": "p31",
+   "title": "Lightroom Premium",
+   "desc": "",
+   "cat": "editing",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Adobe_Photoshop_Lightroom_CC_logo.svg",
+   "logoAsset": "8b853d4fb1e7087c08887ad502aeca97",
+   "prices": [
+    [
+     "1 Tahun Sharing",
+     "20.000"
+    ]
+   ]
+  },
+  {
+   "id": "p32",
+   "title": "Meitu Premium",
+   "desc": "",
+   "cat": "editing",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://getmodsapk.com/storage/Meitu%20MOD%20APK0.png",
+   "logoAsset": "9206ffcf2db8049ac37856f0ef5cb81b",
+   "prices": [
+    [
+     "1 Bulan 3u",
+     "20.000"
+    ]
+   ]
+  },
+  {
+   "id": "p33",
+   "title": "Vision Premium",
+   "desc": "",
+   "cat": "streaming",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://mir-s3-cdn-cf.behance.net/projects/max_808/35b05093008279.Y3JvcCwxNDg2LDExNjIsNDk2LDUxNQ.jpg",
+   "logoAsset": "abb2a13a723dcd111f053ae751eb325a",
+   "prices": [
+    [
+     "Timnas & Bein Pay TV 1 Bulan",
+     "20.000"
+    ],
+    [
+     "Ultimate Premium",
+     "60.000"
+    ]
+   ]
+  },
+  {
+   "id": "p28",
+   "title": "Loklok Premium",
+   "desc": "",
+   "cat": "streaming",
+   "featured": false,
+   "hidden": false,
+   "logo": "https://loklokapkk.com/wp-content/uploads/2024/12/logo-table-new-1.webp",
+   "logoAsset": "69334cfa940c010f5c8051f1d170f916",
+   "prices": [
+    [
+     "1 Bulan 3u Android",
+     "24.000"
+    ],
+    [
+     "1 Bulan 5u TV",
+     "21.000"
+    ]
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Berapa lama prosesnya?",
+   "a": "Biasanya cepat setelah order dikonfirmasi di WhatsApp. Untuk jasa desain/joki, waktunya tergantung tingkat kesulitan dan deadline."
+  },
+  {
+   "q": "Ada garansi?",
+   "a": "Ada untuk beberapa produk sesuai ketentuan. Tanyakan ke admin untuk detail garansi tiap produk."
+  },
+  {
+   "q": "Metode pembayarannya apa saja?",
+   "a": "Silakan chat admin untuk info metode pembayaran yang tersedia."
+  },
+  {
+   "q": "Akun sharing dan private bedanya apa?",
+   "a": "Sharing dipakai bersama sesuai paket. Private khusus untuk kamu. Detailnya bisa berbeda tiap layanan, jadi konfirmasi dulu ke admin."
+  },
+  {
+   "q": "Cara order lewat bot gimana?",
+   "a": "Klik Order via bot, kirim LIST, lalu pilih nomor produk. Bot akan mengirim detail dan cara belinya."
+  }
+ ],
+ "testimoni": []
+}

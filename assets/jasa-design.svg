@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="56" fill="#000"/>
+  <!-- garis yang sedang "digambar" -->
+  <path d="M92 420 C 150 330, 196 466, 232 356" fill="none" stroke="#E4FF3A" stroke-width="18" stroke-linecap="square"/>
+  <!-- handle bezier -->
+  <path d="M92 420 L150 330" stroke="#E4FF3A" stroke-width="6"/>
+  <rect x="136" y="316" width="28" height="28" fill="#000" stroke="#E4FF3A" stroke-width="6"/>
+  <rect x="74" y="402" width="36" height="36" fill="#E4FF3A"/>
+  <!-- mata pena, miring mengikuti arah panah logo -->
+  <g transform="rotate(35 300 250)">
+    <rect x="248" y="74" width="104" height="34" fill="#fff"/>
+    <path d="M244 120 L356 120 L384 236 L300 372 L216 236 Z" fill="#fff"/>
+    <path d="M300 372 L300 262" stroke="#000" stroke-width="12"/>
+    <rect x="286" y="234" width="28" height="28" fill="#000" transform="rotate(45 300 248)"/>
+  </g>
+</svg>

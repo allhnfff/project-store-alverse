@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>AL STORE | Langganan Aplikasi Premium &amp; Jasa Desain</title>
+  <meta name="description" content="Langganan aplikasi premium dan jasa desain. Lihat semua paket dan harga, lalu pesan lewat WhatsApp admin atau bot otomatis." />
+  <meta name="theme-color" content="#000000" />
+
+  <!-- Favicon: logo toko -->
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- Font: Archivo (satu keluarga, lebar huruf jadi suara brand: lebar untuk judul, normal untuk teks) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+  <!-- Ikon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* =========================================================
+       1. TOKEN WARNA
+       Palet diturunkan dari logo AL STORE: hitam pekat dan putih.
+       Ganti hanya nilai di blok "PALET DASAR"; warna turunan
+       (hover, latar lembut, garis, bayangan) dihitung otomatis.
+       ========================================================= */
+    :root{
+      /* --- PALET DASAR: "Monokrom Logo" --- */
+      --color-bg:         #F1F1F1;  /* latar halaman (abu sangat muda) */
+      --color-surface:    #FFFFFF;  /* kartu, panel, modal */
+      --color-text:       #000000;  /* teks utama, sama dengan hitam logo */
+      --color-muted:      #575757;  /* teks sekunder */
+      --color-border:     #D6D6D6;  /* garis & pembatas */
+      --color-accent:     #000000;  /* aksi utama: hitam logo */
+      --color-on-accent:  #FFFFFF;  /* teks di atas aksen */
+      --color-inverse:    #000000;  /* blok brand: header, hero, footer */
+      --color-on-inverse: #FFFFFF;  /* teks di atas blok brand */
+
+      /* --- TURUNAN (ikut palet dasar, tidak perlu diubah) --- */
+      --color-surface-sunken: color-mix(in srgb, var(--color-text) 4%, var(--color-surface));
+      --color-border-strong:  color-mix(in srgb, var(--color-text) 42%, var(--color-border));
+      --color-accent-hover:   color-mix(in srgb, var(--color-accent) 82%, var(--color-surface));
+      --color-accent-soft:    color-mix(in srgb, var(--color-accent) 6%, var(--color-surface));
+      --color-on-inverse-muted: color-mix(in srgb, var(--color-on-inverse) 72%, var(--color-inverse));
+      --color-inverse-line:   color-mix(in srgb, var(--color-on-inverse) 22%, var(--color-inverse));
+      --color-inverse-hover:  color-mix(in srgb, var(--color-on-inverse) 12%, var(--color-inverse));
+      --color-focus: var(--color-text);
+      --shadow-md: 0 10px 28px -14px color-mix(in srgb, var(--color-text) 35%, transparent);
+      --shadow-lg: 0 24px 64px -16px color-mix(in srgb, var(--color-text) 50%, transparent);
+
+      /* --- TIPOGRAFI --- */
+      --font: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      --wide: 125%;   /* lebar huruf untuk judul */
+      --fs-xs: 12.5px;
+      --fs-sm: 13.5px;
+      --fs-base: 15px;
+      --fs-md: 17px;
+      --fs-lg: clamp(22px, 1.2vw + 16px, 28px);
+      --fs-xl: clamp(30px, 3.2vw + 16px, 60px);
+
+      /* --- BENTUK & RUANG ---
+         Sudut kecil meniru sudut tajam logo. */
+      --radius-sm: 4px;   /* tombol, input, chip, tile */
+      --radius-md: 6px;   /* kartu, panel */
+      --radius-lg: 12px;  /* modal */
+      --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+      --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 72px;
+      --container: 1200px;
+      --gutter: 16px;
+      --header-h: 60px;
+      --bar-h: 64px;
+      --ease: cubic-bezier(.2,.7,.2,1);
+      --dur: 150ms;
+    }
+    @media (min-width: 768px){ :root{ --gutter: 32px; --header-h: 68px; } }
+
+    /* Area hitam (header, hero, footer, panel testimoni) memakai fokus putih */
+    .inverse{
+      background: var(--color-inverse);
+      color: var(--color-on-inverse);
+      --color-focus: var(--color-on-inverse);
+    }
+
+    /* =========================================================
+       2. DASAR
+       ========================================================= */
+    *, *::before, *::after{ box-sizing: border-box; }
+    html{ -webkit-text-size-adjust: 100%; }
+    @media (prefers-reduced-motion: no-preference){ html{ scroll-behavior: smooth; } }
+    body{
+      margin: 0;
+      font-family: var(--font);
+      font-size: var(--fs-base);
+      line-height: 1.6;
+      color: var(--color-text);
+      background: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img{ max-width: 100%; display: block; }
+    a{ color: inherit; }
+    button, input, select{ font: inherit; color: inherit; }
+    h1, h2, h3, p{ margin: 0; }
+    ul, ol{ margin: 0; padding: 0; }
+    [hidden]{ display: none !important; }
+    .sr-only{
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+
+    /* Kursor tangan untuk semua kontrol (diatur sekali di sini) */
+    a[href], button, summary, select, label[for],
+    label:has(> input[type="radio"]), input[type="radio"]{ cursor: pointer; }
+    :disabled, [aria-disabled="true"]{ cursor: not-allowed; }
+
+    :focus-visible{
+      outline: 2px solid var(--color-focus);
+      outline-offset: 2px;
+    }
+    .container{
+      width: 100%;
+      max-width: calc(var(--container) + var(--gutter) * 2);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+    }
+    section[id], div[id="faq"], div[id="trust"]{ scroll-margin-top: calc(var(--header-h) + 12px); }
+    .num{ font-variant-numeric: tabular-nums; }
+    .display{
+      font-stretch: var(--wide);
+      font-weight: 800;
+      letter-spacing: -.01em;
+    }
+
+    .skip-link{
+      position: absolute; left: var(--space-4); top: -60px; z-index: 100;
+      background: var(--color-on-inverse); color: var(--color-inverse);
+      padding: var(--space-2) var(--space-4); border-radius: var(--radius-sm);
+      font-weight: 700; text-decoration: none;
+    }
+    .skip-link:focus{ top: var(--space-2); }
+
+    /* Penanda belah ketupat: bentuk luar logo, dipakai sebagai bullet */
+    .diamond{
+      display: inline-block; flex: 0 0 auto;
+      width: 7px; height: 7px;
+      background: currentColor;
+      transform: rotate(45deg);
+    }
+
+    /* =========================================================
+       3. TOMBOL
+       Tiga tingkat: primary (isi hitam), secondary (garis), ghost.
+       ========================================================= */
+    .btn{
+      display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+      min-height: 44px;
+      padding: 0 var(--space-4);
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      font-weight: 700; font-size: var(--fs-sm); line-height: 1.2;
+      text-decoration: none; white-space: nowrap;
+      transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+    }
+    .btn i{ font-size: 1.05em; }
+    .btn-primary{ background: var(--color-accent); color: var(--color-on-accent); }
+    .btn-primary:hover{ background: var(--color-accent-hover); }
+    .btn-secondary{ background: var(--color-surface); border-color: var(--color-border-strong); color: var(--color-text); }
+    .btn-secondary:hover{ border-color: var(--color-text); background: var(--color-surface-sunken); }
+    .btn-ghost{ background: transparent; color: var(--color-text); border-color: var(--color-border); }
+    .btn-ghost:hover{ background: var(--color-surface-sunken); border-color: var(--color-border-strong); }
+    .btn-lg{ min-height: 52px; padding: 0 var(--space-5); font-size: var(--fs-base); }
+    .btn-sm{ min-height: 40px; padding: 0 var(--space-3); }
+    .btn:active{ transform: translateY(1px); }
+
+    /* Tombol di atas area hitam */
+    .inverse .btn-primary{ background: var(--color-on-inverse); color: var(--color-inverse); }
+    .inverse .btn-primary:hover{ background: color-mix(in srgb, var(--color-on-inverse) 86%, var(--color-inverse)); }
+    .inverse .btn-secondary{ background: transparent; color: var(--color-on-inverse); border-color: var(--color-on-inverse-muted); }
+    .inverse .btn-secondary:hover{ border-color: var(--color-on-inverse); background: var(--color-inverse-hover); }
+
+    .text-link{
+      font-weight: 700; text-decoration: underline;
+      text-decoration-thickness: 1px; text-underline-offset: 4px;
+    }
+    .text-link:hover{ text-decoration-thickness: 2px; }
+    .hero-actions .text-link{ display: inline-flex; align-items: center; min-height: 44px; }
+
+    /* =========================================================
+       4. HEADER (hitam, menyatu dengan latar logo)
+       ========================================================= */
+    .site-header{
+      position: sticky; top: 0; z-index: 40;
+      border-bottom: 1px solid var(--color-inverse-line);
+    }
+    .header-inner{
+      display: flex; align-items: center; gap: var(--space-5);
+      min-height: var(--header-h);
+    }
+    .brand{
+      display: flex; align-items: center; gap: var(--space-3);
+      text-decoration: none; margin-right: auto; min-width: 0;
+    }
+    .brand-mark{
+      width: 40px; height: 40px; flex: 0 0 auto;
+      background: var(--color-inverse);
+      border: 1px solid var(--color-inverse-line);
+      border-radius: var(--radius-sm);
+      display: grid; place-items: center; overflow: hidden;
+    }
+    /* Logo punya ruang kosong di sekelilingnya; diperbesar agar simbolnya terbaca di ukuran kecil */
+    .brand-mark img{ width: 100%; height: 100%; object-fit: cover; transform: scale(1.6); }
+    .brand-monogram{ font-weight: 800; font-stretch: var(--wide); font-size: 13px; color: var(--color-on-inverse); }
+    .brand-name{
+      display: block;
+      font-stretch: var(--wide); font-weight: 800; font-size: 18px;
+      letter-spacing: .02em; line-height: 1.1;
+    }
+    .brand-tag{ display: block; font-size: var(--fs-xs); color: var(--color-on-inverse-muted); line-height: 1.3; margin-top: 2px; }
+
+    .nav{ display: flex; gap: var(--space-1); }
+    .nav a{
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-sm);
+      color: var(--color-on-inverse-muted); font-weight: 600; font-size: var(--fs-sm);
+      text-decoration: none;
+      transition: color var(--dur) var(--ease), background-color var(--dur) var(--ease);
+    }
+    .nav a:hover{ color: var(--color-on-inverse); background: var(--color-inverse-hover); }
+
+    .menu-toggle{
+      display: none;
+      align-items: center; gap: var(--space-2);
+      min-height: 44px; padding: 0 var(--space-3);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-on-inverse-muted);
+      background: transparent; color: var(--color-on-inverse);
+      font-weight: 700; font-size: var(--fs-sm);
+    }
+    .menu-toggle:hover{ background: var(--color-inverse-hover); }
+    .mobile-menu{
+      border-top: 1px solid var(--color-inverse-line);
+      padding-block: var(--space-2) var(--space-4);
+    }
+    .mobile-menu nav{ display: grid; }
+    .mobile-menu a{
+      display: flex; align-items: center; gap: var(--space-3);
+      min-height: 52px; padding: 0 var(--space-2);
+      border-bottom: 1px solid var(--color-inverse-line);
+      font-weight: 700; text-decoration: none;
+    }
+    .mobile-menu a:last-child{ border-bottom: 0; }
+    .mobile-menu a:hover{ background: var(--color-inverse-hover); }
+    .mobile-menu .diamond{ color: var(--color-on-inverse-muted); }
+
+    @media (max-width: 860px){
+      .nav, .header-cta{ display: none; }
+      .menu-toggle{ display: inline-flex; }
+    }
+    @media (max-width: 400px){ .brand-tag{ display: none; } }
+    @media (min-width: 861px){ .mobile-menu{ display: none !important; } }
+
+    /* =========================================================
+       5. HERO (blok hitam dengan logo sebagai titik fokus)
+       ========================================================= */
+    .hero{ padding-block: var(--space-7) var(--space-8); overflow: hidden; }
+    .hero-grid{
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr);
+      gap: var(--space-6);
+      align-items: center;
+    }
+    .hero h1{
+      font-size: var(--fs-xl);
+      line-height: 1.02;
+      max-width: 15ch;
+      text-wrap: balance;
+    }
+    .hero .lead{
+      margin-top: var(--space-5);
+      font-size: var(--fs-md);
+      color: var(--color-on-inverse-muted);
+      max-width: 44ch;
+    }
+    .hero-actions{
+      display: flex; align-items: center; gap: var(--space-5); flex-wrap: wrap;
+      margin-top: var(--space-6);
+    }
+    .hero-facts{
+      list-style: none;
+      display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5);
+      margin-top: var(--space-6);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--color-inverse-line);
+      font-size: var(--fs-sm); color: var(--color-on-inverse-muted);
+    }
+    .hero-facts li{ display: flex; align-items: center; gap: var(--space-3); }
+    .hero-facts .diamond{ color: var(--color-on-inverse); }
+    .hero-mark{ justify-self: end; width: min(100%, 440px); aspect-ratio: 1; }
+    .hero-mark img{ width: 100%; height: 100%; }
+
+    @media (max-width: 900px){
+      .hero-grid{ grid-template-columns: minmax(0, 1fr) 180px; }
+      .hero-mark{ align-self: start; }
+    }
+    @media (max-width: 639px){
+      .hero{ padding-block: var(--space-6) var(--space-7); }
+      .hero-grid{ grid-template-columns: 1fr; }
+      .hero-mark{ display: none; }
+      .hero h1{ max-width: none; text-wrap: pretty; }
+      .hero .lead{ margin-top: var(--space-4); font-size: var(--fs-base); }
+      .hero-actions{ margin-top: var(--space-5); gap: var(--space-4); }
+      .hero-actions .btn{ flex: 1 1 auto; }
+      .hero-facts{ flex-direction: column; margin-top: var(--space-5); }
+    }
+
+    /* =========================================================
+       6. TILE LOGO PRODUK
+       Latar putih seragam agar logo dari berbagai sumber terlihat rapi.
+       ========================================================= */
+    .tile{
+      flex: 0 0 auto;
+      width: 48px; height: 48px;
+      border-radius: var(--radius-sm);
+      background: #FFFFFF;
+      border: 1px solid var(--color-border);
+      display: grid; place-items: center;
+      overflow: hidden;
+    }
+    .tile img{ width: 100%; height: 100%; object-fit: contain; padding: 6px; }
+    .tile-fallback{
+      width: 100%; height: 100%;
+      display: grid; place-items: center;
+      background: var(--color-surface-sunken);
+      color: var(--color-text);
+      font-weight: 800; font-stretch: var(--wide); font-size: 14px;
+    }
+    .tile-lg{ width: 64px; height: 64px; }
+    .tile-lg img{ padding: 8px; }
+    .tile-lg .tile-fallback{ font-size: 19px; }
+
+    /* =========================================================
+       7. KATALOG
+       ========================================================= */
+    .section{ padding-block: var(--space-7); }
+    .catalog{ background: var(--color-surface); }
+    .section-head{ margin-bottom: var(--space-5); max-width: 62ch; }
+    .section-head h2, .block-title{
+      font-size: var(--fs-lg); line-height: 1.15;
+      font-stretch: var(--wide); font-weight: 800; letter-spacing: -.01em;
+    }
+    .section-head p{ margin-top: var(--space-2); color: var(--color-muted); }
+
+    .toolbar{ display: grid; gap: var(--space-4); margin-bottom: var(--space-5); }
+    .search{ position: relative; max-width: 560px; }
+    .search > i{
+      position: absolute; left: 15px; top: 50%; transform: translateY(-50%);
+      color: var(--color-muted); pointer-events: none;
+    }
+    .search input{
+      width: 100%;
+      height: 50px;
+      padding: 0 50px 0 44px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border-strong);
+      background: var(--color-surface);
+      font-size: 16px; /* 16px mencegah zoom otomatis di iPhone */
+      transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    }
+    .search input::placeholder{ color: var(--color-muted); opacity: 1; }
+    .search input:hover{ border-color: var(--color-text); }
+    .search input:focus-visible{
+      outline: none;
+      border-color: var(--color-text);
+      box-shadow: 0 0 0 2px var(--color-text);
+    }
+    .search input::-webkit-search-cancel-button{ -webkit-appearance: none; appearance: none; }
+    .search-clear{
+      position: absolute; right: 3px; top: 3px;
+      width: 44px; height: 44px;
+      border: 0; border-radius: var(--radius-sm);
+      background: transparent; color: var(--color-muted);
+      display: grid; place-items: center;
+    }
+    .search-clear:hover{ background: var(--color-surface-sunken); color: var(--color-text); }
+
+    .chips{ display: flex; flex-wrap: wrap; gap: var(--space-2); }
+    .chip{
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      min-height: 40px; padding: 0 var(--space-3);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border-strong);
+      background: var(--color-surface);
+      font-size: var(--fs-sm); font-weight: 700;
+      white-space: nowrap;
+      transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+    }
+    .chip:hover{ border-color: var(--color-text); }
+    .chip-count{ font-size: var(--fs-xs); font-weight: 600; color: var(--color-muted); font-variant-numeric: tabular-nums; }
+    .chip[aria-pressed="true"]{ background: var(--color-accent); border-color: var(--color-accent); color: var(--color-on-accent); }
+    .chip[aria-pressed="true"] .chip-count{ color: color-mix(in srgb, var(--color-on-accent) 75%, var(--color-accent)); }
+
+    @media (max-width: 639px){
+      /* Satu baris yang bisa digeser: 7 filter pendek tidak memakan 3 baris layar */
+      .chips{
+        flex-wrap: nowrap; overflow-x: auto;
+        margin-inline: calc(var(--gutter) * -1);
+        padding: 2px var(--gutter);
+        scrollbar-width: none;
+        -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 40px), transparent);
+                mask-image: linear-gradient(90deg, #000 calc(100% - 40px), transparent);
+      }
+      .chips::-webkit-scrollbar{ display: none; }
+      .chips::after{ content: ""; flex: 0 0 24px; }
+    }
+
+    .toolbar-foot{
+      display: flex; justify-content: space-between; align-items: center; gap: var(--space-4);
+      padding-top: var(--space-3);
+      border-top: 1px solid var(--color-border);
+    }
+    .result-count{ font-size: var(--fs-sm); color: var(--color-muted); }
+    .result-count b{ color: var(--color-text); }
+    .sort{ display: flex; align-items: center; gap: var(--space-2); font-size: var(--fs-sm); color: var(--color-muted); }
+    .sort select{
+      height: 40px;
+      padding: 0 34px 0 var(--space-3);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border-strong);
+      background-color: var(--color-surface);
+      font-size: var(--fs-sm); font-weight: 700; color: var(--color-text);
+      appearance: none; -webkit-appearance: none;
+      background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+      background-position: calc(100% - 17px) 50%, calc(100% - 12px) 50%;
+      background-size: 5px 5px, 5px 5px;
+      background-repeat: no-repeat;
+    }
+    .sort select:hover{ border-color: var(--color-text); }
+
+    /* Grid produk: 4 / 3 / 2 kolom; di HP menjadi daftar satu kolom */
+    .product-grid{
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(232px, 1fr));
+      gap: var(--space-4);
+    }
+    .product-grid > li{ display: flex; }
+    .product{
+      width: 100%;
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      grid-template-rows: auto auto 1fr auto;
+      grid-template-areas:
+        "media . flag"
+        "name  name name"
+        "desc  desc desc"
+        "foot  foot foot";
+      text-align: left;
+      padding: var(--space-4);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    }
+    .product:hover{ border-color: var(--color-text); box-shadow: var(--shadow-md); }
+    .product:active{ background: var(--color-surface-sunken); }
+    .product .tile{ grid-area: media; }
+    .product-flag{
+      grid-area: flag; align-self: start;
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: var(--fs-xs); font-weight: 700;
+    }
+    .product-flag .diamond{ width: 6px; height: 6px; }
+    .product-name{
+      grid-area: name;
+      margin-top: var(--space-3);
+      font-weight: 700; font-size: var(--fs-base); line-height: 1.3;
+    }
+    .product-desc{
+      grid-area: desc;
+      margin-top: var(--space-1);
+      font-size: var(--fs-sm); color: var(--color-muted); line-height: 1.5;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .product-foot{
+      grid-area: foot;
+      display: flex; justify-content: space-between; align-items: flex-end; gap: var(--space-3);
+      margin-top: var(--space-4);
+      padding-top: var(--space-3);
+      border-top: 1px dashed var(--color-border-strong);
+    }
+    .product-price{ grid-area: price; font-size: var(--fs-sm); }
+    .product-price small{ color: var(--color-muted); font-size: var(--fs-xs); font-weight: 500; }
+    .product-price b{ display: block; font-size: var(--fs-md); font-weight: 800; font-stretch: 112%; }
+    .product-count{
+      display: flex; align-items: center; gap: 6px; padding-bottom: 3px;
+      font-size: var(--fs-xs); font-weight: 700; white-space: nowrap;
+    }
+    .product-count i{ font-size: 10px; }
+
+    @media (max-width: 639px){
+      .product-grid{
+        grid-template-columns: 1fr; gap: 0;
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+      }
+      .product-grid > li + li .product{ border-top: 1px solid var(--color-border); }
+      .product{
+        grid-template-columns: 48px minmax(0,1fr) auto;
+        grid-template-rows: auto auto auto;
+        grid-template-areas:
+          "media name price"
+          "media desc price"
+          "media flag price";
+        column-gap: var(--space-3);
+        align-items: center;
+        min-height: 76px;
+        padding: var(--space-3) var(--space-4);
+        border: 0; border-radius: 0;
+      }
+      .product:hover{ box-shadow: none; background: var(--color-surface-sunken); }
+      .product:focus-visible{ outline-offset: -3px; }
+      .product .tile{ align-self: start; }
+      .product-name{ margin-top: 0; }
+      .product-desc{ -webkit-line-clamp: 1; margin-top: 0; }
+      .product-flag{ justify-self: start; margin-top: 3px; }
+      .product-foot{ display: contents; }
+      .product-price{ text-align: right; align-self: center; }
+      .product-price b{ font-size: var(--fs-base); }
+      .product-count{ display: none; }
+    }
+
+    .empty{
+      border: 1px dashed var(--color-border-strong);
+      border-radius: var(--radius-md);
+      padding: var(--space-6) var(--space-5);
+      text-align: center;
+    }
+    .empty h3{ font-size: var(--fs-md); font-weight: 800; }
+    .empty p{ margin-top: var(--space-2); color: var(--color-muted); }
+    .empty .actions{ display: flex; gap: var(--space-2); justify-content: center; flex-wrap: wrap; margin-top: var(--space-4); }
+
+    /* =========================================================
+       8. CARA ORDER + FAQ
+       ========================================================= */
+    .two-col{
+      display: grid;
+      grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+      gap: var(--space-7);
+      align-items: start;
+    }
+    .two-col--contact{ grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); }
+    @media (max-width: 860px){ .two-col, .two-col--contact{ grid-template-columns: 1fr; gap: var(--space-6); } }
+
+    /* Nomor langkah berbentuk kotak, seperti kotak di tengah logo */
+    .steps{ list-style: none; counter-reset: step; margin-top: var(--space-5); }
+    .steps li{ counter-increment: step; position: relative; padding: 0 0 var(--space-5) 52px; }
+    .steps li::before{
+      content: counter(step);
+      position: absolute; left: 0; top: 0;
+      width: 34px; height: 34px;
+      display: grid; place-items: center;
+      background: var(--color-inverse); color: var(--color-on-inverse);
+      border-radius: 2px;
+      font-weight: 800; font-stretch: var(--wide); font-size: var(--fs-sm);
+    }
+    .steps li:not(:last-child)::after{
+      content: ""; position: absolute; left: 17px; top: 40px; bottom: 6px;
+      border-left: 1px dashed var(--color-border-strong);
+    }
+    .steps h3{ font-size: var(--fs-base); font-weight: 800; padding-top: 5px; }
+    .steps p{ margin-top: 2px; color: var(--color-muted); font-size: var(--fs-sm); max-width: 44ch; }
+
+    .faq-list{ margin-top: var(--space-4); border-top: 1px solid var(--color-border-strong); }
+    .faq-list details{ border-bottom: 1px solid var(--color-border); }
+    .faq-list summary{
+      list-style: none;
+      display: flex; justify-content: space-between; align-items: center; gap: var(--space-4);
+      min-height: 56px; padding-block: var(--space-3);
+      font-weight: 700;
+    }
+    .faq-list summary::-webkit-details-marker{ display: none; }
+    .faq-list summary:hover{ text-decoration: underline; text-underline-offset: 4px; }
+    .faq-list summary i{ color: var(--color-muted); font-size: 13px; transition: transform var(--dur) var(--ease); }
+    .faq-list details[open] summary i{ transform: rotate(180deg); }
+    .faq-list details p{ padding: 0 0 var(--space-4); color: var(--color-muted); max-width: 64ch; }
+
+    /* =========================================================
+       9. KONTAK + TESTIMONI
+       ========================================================= */
+    .contact-section{ background: var(--color-surface); }
+    .contact-list{
+      list-style: none;
+      display: grid;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .contact-list li{ display: flex; align-items: stretch; border-bottom: 1px solid var(--color-border); }
+    .contact-list li:last-child{ border-bottom: 0; }
+    .contact-link{
+      flex: 1 1 auto; min-width: 0;
+      display: flex; align-items: center; gap: var(--space-3);
+      min-height: 68px;
+      padding: var(--space-3) var(--space-4);
+      text-decoration: none;
+      transition: background-color var(--dur) var(--ease);
+    }
+    .contact-link:hover{ background: var(--color-surface-sunken); }
+    .contact-link:focus-visible{ outline-offset: -3px; }
+    .contact-ic{
+      width: 40px; height: 40px; flex: 0 0 auto;
+      border-radius: var(--radius-sm);
+      display: grid; place-items: center;
+      background: var(--color-inverse); color: var(--color-on-inverse);
+      font-size: 18px;
+    }
+    .contact-text{ min-width: 0; }
+    .contact-text b{ display: block; font-size: var(--fs-sm); }
+    .contact-text span{ display: block; font-size: var(--fs-xs); color: var(--color-muted); overflow-wrap: anywhere; }
+    .copy-btn{ align-self: center; margin-right: var(--space-3); }
+
+    .trust{ border-radius: var(--radius-md); padding: var(--space-5); }
+    .trust p{ margin-top: var(--space-3); color: var(--color-on-inverse-muted); }
+    .trust .btn{ margin-top: var(--space-5); }
+    .testimonials{ list-style: none; display: grid; gap: var(--space-3); margin-top: var(--space-4); }
+    .testimonials blockquote{ margin: 0; padding: var(--space-3) var(--space-4); border: 1px solid var(--color-inverse-line); border-radius: var(--radius-sm); }
+    .testimonials cite{ display: block; margin-top: var(--space-1); font-size: var(--fs-xs); color: var(--color-on-inverse-muted); font-style: normal; }
+
+    /* =========================================================
+       10. FOOTER
+       ========================================================= */
+    .site-footer{ padding-block: var(--space-6); font-size: var(--fs-sm); }
+    .foot{ display: flex; justify-content: space-between; align-items: center; gap: var(--space-3) var(--space-4); flex-wrap: wrap; }
+    .foot .brand-name{ font-size: 16px; }
+    .foot p{ color: var(--color-on-inverse-muted); }
+
+    /* =========================================================
+       11. BAR AKSI BAWAH (HP & tablet)
+       Jalur pesan selalu satu ketukan jempol dari mana pun di halaman.
+       ========================================================= */
+    .action-bar{ display: none; }
+    @media (max-width: 860px){
+      body{ padding-bottom: calc(var(--bar-h) + env(safe-area-inset-bottom)); }
+      .action-bar{
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 45;
+        display: grid; grid-template-columns: 64px 1fr 1fr; gap: var(--space-2);
+        padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom));
+        background: var(--color-surface);
+        border-top: 1px solid var(--color-border-strong);
+      }
+      .action-bar .btn{ min-height: 44px; padding: 0 var(--space-2); font-size: var(--fs-sm); }
+      .bar-search{ flex-direction: column; gap: 1px !important; font-size: 11px !important; line-height: 1.1; }
+      .bar-search i{ font-size: 15px; }
+    }
+
+    /* =========================================================
+       12. MODAL DETAIL PRODUK (<dialog>)
+       Desktop: dialog di tengah. HP: lembar dari bawah.
+       ========================================================= */
+    .sheet{
+      padding: 0;
+      width: min(540px, calc(100% - 32px));
+      max-width: calc(100% - 32px);
+      max-height: min(780px, calc(100dvh - 48px));
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      background: var(--color-surface);
+      color: var(--color-text);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+    .sheet[open]{ display: flex; flex-direction: column; }
+    /* ::backdrop tidak selalu membaca variabel CSS di browser lama, jadi nilainya ditulis langsung */
+    .sheet::backdrop{ background: rgba(0, 0, 0, .6); }
+
+    .sheet-head{
+      display: grid;
+      grid-template-columns: auto minmax(0,1fr) auto;
+      gap: var(--space-4);
+      align-items: start;
+      padding: var(--space-5) var(--space-5) var(--space-4);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .sheet-head h2{ font-size: 22px; font-weight: 800; font-stretch: 112%; line-height: 1.15; }
+    .sheet-head h2:focus{ outline: none; }
+    .sheet-head p{ margin-top: var(--space-1); color: var(--color-muted); font-size: var(--fs-sm); }
+    .sheet-close{
+      width: 44px; height: 44px; margin: -6px -8px 0 0;
+      border-radius: var(--radius-sm);
+      border: 0; background: transparent;
+      display: grid; place-items: center; color: var(--color-text); font-size: 18px;
+    }
+    .sheet-close:hover{ background: var(--color-surface-sunken); }
+
+    .sheet-body{
+      flex: 1 1 auto; min-height: 0;
+      overflow-y: auto; overscroll-behavior: contain;
+      padding: var(--space-4) var(--space-5) var(--space-5);
+    }
+    .pkg-fieldset{ border: 0; margin: 0; padding: 0; min-width: 0; }
+    .pkg-fieldset legend{ padding: 0; margin-bottom: var(--space-2); font-size: var(--fs-sm); font-weight: 700; color: var(--color-muted); }
+    .pkg-list{ display: grid; gap: 6px; }
+    .pkg{
+      display: flex; align-items: center; gap: var(--space-3);
+      min-height: 52px;
+      padding: var(--space-2) var(--space-4) var(--space-2) var(--space-3);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      transition: border-color var(--dur) var(--ease), background-color var(--dur) var(--ease);
+    }
+    .pkg:hover{ border-color: var(--color-border-strong); }
+    .pkg input{ flex: 0 0 auto; width: 18px; height: 18px; margin: 0; accent-color: var(--color-accent); }
+    .pkg-name{ font-weight: 600; font-size: var(--fs-sm); min-width: 0; }
+    .leader{
+      flex: 1 1 auto; min-width: var(--space-4);
+      border-bottom: 2px dotted var(--color-border-strong);
+      transform: translateY(3px); opacity: .6;
+    }
+    .pkg-price{ font-weight: 800; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .pkg:has(input:checked){ border-color: var(--color-accent); box-shadow: inset 0 0 0 1px var(--color-accent); background: var(--color-accent-soft); }
+    .pkg:has(input:focus-visible){ outline: 2px solid var(--color-focus); outline-offset: 2px; }
+    .pkg input:focus-visible{ outline: none; }
+
+    .preview{
+      margin-top: var(--space-4);
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-sm);
+      background: var(--color-surface-sunken);
+      font-size: var(--fs-sm);
+    }
+    .preview-label{ font-size: var(--fs-xs); font-weight: 700; color: var(--color-muted); }
+    .preview-text{ margin-top: 2px; overflow-wrap: anywhere; }
+    .sheet-note{ margin-top: var(--space-3); font-size: var(--fs-xs); color: var(--color-muted); }
+
+    .sheet-actions{
+      display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2);
+      padding: var(--space-4) var(--space-5);
+      border-top: 1px solid var(--color-border);
+      background: var(--color-surface);
+    }
+    .sheet-actions .btn-primary{ grid-column: 1 / -1; }
+
+    @media (max-width: 639px){
+      .sheet{
+        width: 100%; max-width: 100%;
+        margin: auto 0 0;
+        max-height: 92dvh;
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        border-bottom: 0;
+      }
+      .sheet-head{ padding: var(--space-4) var(--space-4) var(--space-3); gap: var(--space-3); }
+      .sheet-head .tile-lg{ width: 52px; height: 52px; }
+      .sheet-head h2{ font-size: 19px; }
+      .sheet-body{ padding: var(--space-3) var(--space-4) var(--space-4); }
+      .sheet-actions{ padding: var(--space-3) var(--space-4) calc(var(--space-3) + env(safe-area-inset-bottom)); }
+    }
+
+    /* Satu-satunya animasi: modal muncul sebagai respons ketukan */
+    @media (prefers-reduced-motion: no-preference){
+      .sheet[open]{ animation: sheet-in 180ms var(--ease); }
+      .sheet[open]::backdrop{ animation: fade-in 180ms var(--ease); }
+      @media (max-width: 639px){ .sheet[open]{ animation-name: sheet-up; animation-duration: 220ms; } }
+    }
+    @keyframes sheet-in{ from{ opacity: 0; transform: translateY(8px); } }
+    @keyframes sheet-up{ from{ transform: translateY(100%); } }
+    @keyframes fade-in{ from{ opacity: 0; } }
+    @media (prefers-reduced-motion: reduce){
+      *, *::before, *::after{ transition-duration: 1ms !important; animation-duration: 1ms !important; }
+    }
+
+    /* Notifikasi kecil untuk aksi salin */
+    .toast{
+      position: fixed; left: 50%; bottom: var(--space-5); z-index: 120;
+      transform: translateX(-50%);
+      background: var(--color-inverse); color: var(--color-on-inverse);
+      padding: var(--space-2) var(--space-4); border-radius: var(--radius-sm);
+      font-size: var(--fs-sm); font-weight: 700;
+      max-width: calc(100% - 32px);
+    }
+    @media (max-width: 860px){ .toast{ bottom: calc(var(--bar-h) + env(safe-area-inset-bottom) + 12px); } }
+  </style>
+</head>
+<body id="top">
+  <a class="skip-link" href="#products">Langsung ke katalog</a>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header inverse">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="AL STORE, ke atas halaman">
+        <span class="brand-mark">
+          <img src="logo.png" alt="" width="40" height="40" id="brandLogo">
+        </span>
+        <span>
+          <span class="brand-name">AL STORE</span>
+          <span class="brand-tag">Aplikasi premium &amp; jasa desain</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Navigasi utama">
+        <a href="#products">Katalog</a>
+        <a href="#cara-order">Cara order</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Kontak</a>
+      </nav>
+
+      <a class="btn btn-secondary btn-sm header-cta" id="navAdmin" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Chat admin
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileMenu">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i><span>Menu</span>
+      </button>
+    </div>
+
+    <div class="mobile-menu container" id="mobileMenu" hidden>
+      <nav aria-label="Menu">
+        <a href="#products"><span class="diamond" aria-hidden="true"></span>Katalog</a>
+        <a href="#cara-order"><span class="diamond" aria-hidden="true"></span>Cara order</a>
+        <a href="#faq"><span class="diamond" aria-hidden="true"></span>FAQ</a>
+        <a href="#contact"><span class="diamond" aria-hidden="true"></span>Kontak</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section class="hero inverse" aria-labelledby="heroTitle">
+      <div class="container hero-grid">
+        <div>
+          <h1 id="heroTitle" class="display">Aplikasi premium dan jasa desain, pesan lewat WhatsApp.</h1>
+          <p class="lead">Cari produknya, buka detail untuk melihat semua paket dan harga, lalu pesan ke admin atau ke bot order otomatis.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" href="#products">Lihat katalog</a>
+            <a class="text-link" href="#cara-order">Cara order</a>
+          </div>
+          <ul class="hero-facts">
+            <li><span class="diamond" aria-hidden="true"></span>Bot order aktif 24 jam</li>
+            <li><span class="diamond" aria-hidden="true"></span>Admin bantu pilih paket</li>
+            <li><span class="diamond" aria-hidden="true"></span><span>Melayani sejak <span id="sinceYear">2023</span></span></li>
+          </ul>
+        </div>
+        <div class="hero-mark">
+          <img src="logo.png" alt="" width="440" height="440" fetchpriority="high" id="heroLogo">
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= KATALOG ================= -->
+    <section class="section catalog" id="products" aria-labelledby="catalogTitle">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="catalogTitle">Katalog</h2>
+          <p>Pilih produk untuk melihat semua paket, harga, dan tombol order.</p>
+        </div>
+
+        <div class="toolbar">
+          <div class="search" role="search">
+            <label for="q" class="sr-only">Cari produk</label>
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            <input id="q" type="search" placeholder="Cari Netflix, Canva, Spotify…" autocomplete="off" enterkeyhint="search" />
+            <button class="search-clear" id="clearQ" type="button" aria-label="Hapus pencarian" hidden>
+              <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div class="chips" id="chips" role="group" aria-label="Filter kategori"></div>
+
+          <div class="toolbar-foot">
+            <p class="result-count" id="resultCount" aria-live="polite"></p>
+            <label class="sort" for="sort">
+              Urutkan
+              <select id="sort">
+                <option value="reco">Rekomendasi</option>
+                <option value="low">Harga termurah</option>
+                <option value="high">Harga termahal</option>
+                <option value="az">Nama (A ke Z)</option>
+                <option value="za">Nama (Z ke A)</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <ul class="product-grid" id="grid" role="list"></ul>
+
+        <div class="empty" id="empty" hidden>
+          <h3 id="emptyTitle">Produk tidak ditemukan</h3>
+          <p>Coba kata lain atau tampilkan semua produk. Kalau tetap tidak ada, tanyakan ke admin.</p>
+          <div class="actions">
+            <button class="btn btn-secondary" id="resetFilters" type="button">Tampilkan semua produk</button>
+            <a class="btn btn-ghost" id="askAdmin" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Tanya admin
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CARA ORDER + FAQ ================= -->
+    <section class="section" id="cara-order" aria-label="Cara order dan pertanyaan umum">
+      <div class="container two-col">
+        <div>
+          <h2 class="block-title">Cara order</h2>
+          <ol class="steps">
+            <li>
+              <h3>Pilih produk dan paket</h3>
+              <p>Buka detail produk untuk melihat semua paket beserta harganya.</p>
+            </li>
+            <li>
+              <h3>Pesan lewat WhatsApp</h3>
+              <p>Ke admin: pesan otomatis berisi produk dan paket pilihanmu. Ke bot: kirim <b>LIST</b>, lalu pilih nomor produk.</p>
+            </li>
+            <li>
+              <h3>Bayar dan konfirmasi</h3>
+              <p>Ikuti instruksi pembayaran dari admin atau bot, lalu pesananmu diproses.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div id="faq">
+          <h2 class="block-title">Pertanyaan umum</h2>
+          <div class="faq-list">
+            <details>
+              <summary>Berapa lama prosesnya? <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
+              <p>Biasanya cepat setelah order dikonfirmasi di WhatsApp. Untuk jasa desain/joki, waktunya tergantung tingkat kesulitan dan deadline.</p>
+            </details>
+            <details>
+              <summary>Ada garansi? <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
+              <p>Ada untuk beberapa produk sesuai ketentuan. Tanyakan ke admin untuk detail garansi tiap produk.</p>
+            </details>
+            <details>
+              <summary>Metode pembayarannya apa saja? <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
+              <p>Silakan chat admin untuk info metode pembayaran yang tersedia.</p>
+            </details>
+            <details>
+              <summary>Akun sharing dan private bedanya apa? <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
+              <p>Sharing dipakai bersama sesuai paket. Private khusus untuk kamu. Detailnya bisa berbeda tiap layanan, jadi konfirmasi dulu ke admin.</p>
+            </details>
+            <details>
+              <summary>Cara order lewat bot gimana? <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
+              <p>Klik <b>Order via bot</b>, kirim <b>LIST</b>, lalu pilih nomor produk. Bot akan mengirim detail dan cara belinya.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= KONTAK + TESTIMONI ================= -->
+    <section class="section contact-section" id="contact" aria-labelledby="contactTitle">
+      <div class="container two-col two-col--contact">
+        <div>
+          <div class="section-head">
+            <h2 id="contactTitle">Kontak</h2>
+            <p>Pilih jalur yang paling cocok. Semua tautan membuka aplikasi terkait.</p>
+          </div>
+          <ul class="contact-list" id="contactList"></ul>
+        </div>
+
+        <div class="trust inverse" id="trust">
+          <h2 class="block-title">Testimoni</h2>
+          <p>Testimoni pelanggan kami kumpulkan di channel Telegram, supaya kamu bisa cek sebelum membeli.</p>
+          <ul class="testimonials" id="testimonials" hidden></ul>
+          <a class="btn btn-primary" id="tgTesti" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-telegram" aria-hidden="true"></i> Lihat testimoni di Telegram
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer inverse">
+    <div class="container foot">
+      <span class="brand-name">AL STORE</span>
+      <p>© <span id="copyYear">2026</span> AL STORE. Melayani sejak <span id="sinceYear2">2023</span>. Dibuat di Indonesia.</p>
+    </div>
+  </footer>
+
+  <!-- ================= BAR AKSI BAWAH (HP) ================= -->
+  <nav class="action-bar" aria-label="Aksi cepat">
+    <button class="btn btn-ghost bar-search" id="barSearch" type="button">
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>Cari
+    </button>
+    <a class="btn btn-primary" id="barAdmin" target="_blank" rel="noopener noreferrer">
+      <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Chat admin
+    </a>
+    <a class="btn btn-secondary" id="barBot" target="_blank" rel="noopener noreferrer">
+      <i class="fa-solid fa-list-ol" aria-hidden="true"></i> Order bot
+    </a>
+  </nav>
+
+  <!-- ================= MODAL DETAIL ================= -->
+  <dialog class="sheet" id="detail" aria-labelledby="dName" aria-describedby="dDesc">
+    <div class="sheet-head">
+      <span class="tile tile-lg" id="dMedia"></span>
+      <div>
+        <h2 id="dName" tabindex="-1">Nama produk</h2>
+        <p id="dDesc">Deskripsi</p>
+      </div>
+      <button class="sheet-close" id="dClose" type="button" aria-label="Tutup detail">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <div class="sheet-body">
+      <fieldset class="pkg-fieldset">
+        <legend id="dLegend">Pilih paket</legend>
+        <div class="pkg-list" id="dPackages"></div>
+      </fieldset>
+
+      <div class="preview" aria-live="polite">
+        <div class="preview-label">Pesan yang dikirim ke admin</div>
+        <div class="preview-text" id="dPreview"></div>
+      </div>
+      <p class="sheet-note">Lewat bot, kirim <b>LIST</b> lalu pilih nomor produk. Pertanyaan soal garansi atau pembayaran bisa ditanyakan ke admin.</p>
+    </div>
+
+    <div class="sheet-actions">
+      <a class="btn btn-primary btn-lg" id="dOrderAdmin" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order via admin
+      </a>
+      <a class="btn btn-secondary" id="dOrderBot" target="_blank" rel="noopener noreferrer">
+        <i class="fa-solid fa-list-ol" aria-hidden="true"></i> Order via bot
+      </a>
+      <button class="btn btn-ghost" id="dCopy" type="button">
+        <i class="fa-regular fa-copy" aria-hidden="true"></i> Salin teks order
+      </button>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" hidden></div>
+
+  <script>
+    // =====================================================
+    // 1. PENGATURAN TOKO
+    // =====================================================
+    const CONFIG = {
+      WA_ADMIN:       "6285841218112", // Admin kontak & bantuan (baris "WhatsApp Admin" di bagian Kontak)
+      WA_ORDER_ADMIN: "6283168725825", // Admin order: "Chat admin", "Order via admin", "Salin nomor"
+      WA_BOT:         "6287897294851", // Bot auto order
+      BOT_TEXT:       "LIST",          // Pesan pembuka ke bot
+      GROUP_URL:      "https://chat.whatsapp.com/C9h8uAhCujyF5Wa4d3XzmS",
+      INSTAGRAM_URL:   "https://www.instagram.com/alveersse",
+      INSTAGRAM_LABEL: "@alveersse",
+      // Masih alamat Telegram lama; ganti kalau channel-nya sudah pindah nama.
+      TELEGRAM_URL:   "https://t.me/lylyst0ree",
+      SINCE: 2023
+    };
+
+    // Produk yang diberi label "Pilihan admin" (penandaan internal, bukan data penjualan)
+    const PILIHAN_ADMIN = /canva|netflix|chatgpt|youtube|capcut|dramabox/i;
+
+    // Testimoni asli. Kosong = bagian kutipan tidak ditampilkan.
+    // Contoh isi: { teks: "Adminnya cepat balas.", nama: "Rina, Bandung" }
+    const TESTIMONI = [];
+
+    // =====================================================
+    // 2. DATA PRODUK
+    // cat: streaming | music | ai | editing | tools | other
+    // (jika cat tidak diisi, kategori ditebak dari nama & deskripsi)
+    // =====================================================
+    const products = [
+      {title: 'Canva Pro', cat: 'editing', desc: 'Desain grafis profesional', logo: 'https://freepnglogo.com/images/all_img/1691829400logo-canva-png.png', prices: [['1 Bulan', '6.000'], ['3 Bulan', '13.000'], ['1 Tahun', '17.000'], ['Lifetime', '20.000']]},
+      {title: 'Jasa Design/Joki', cat: 'editing', desc: 'Jasa Yang Mempermudah Kalian Jika Tugas Menumpuk', logo: 'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/199815619/original/f3246834c4767a44a7046affac52ca7e4a60578e/design-unique-brand-build-identity-logo.jpg', prices: [['PPT Per Slide', '3.000'],['1 Poster', '30.000'], ['1 Banner', '30.000'], ['1 Logo', '30.000'], ['Web Sederhana', '50.000']]},
+      {title: 'Netflix Premium', cat: 'streaming', desc: 'Streaming film dan series 4K', logo: 'https://images.ctfassets.net/wt70guc1rpin/4J5l85tSYUWxfT0zj90Wai/06c55d490990e65f62d0e8384526e09c/letterform_logo.jpeg', prices: [['Semipriv', '35.000/bln'], ['1p1u', '30.000/bln'], ['1p2u', '20.000/bln']]},
+      {title: 'CapCut Premium', cat: 'editing', desc: 'Edit video profesional', logo: 'https://vectorseek.com/wp-content/uploads/2023/07/png-capcut-logo.png', prices: [['1 Bulan Private', '35.000'], ['1 Bulan 2u', '27.000'], ['7 Hari Private', '11.000']]},
+      {title: 'ChatGPT Premium', cat: 'ai', desc: 'AI dengan model terbaru', logo: 'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg', prices: [['gpt go 1 Bulan', '28.000'], ['gpt plus 1 bulan', '35.000']]},
+      {title: 'Gemini Pro + 5 Drive TB', cat: 'ai', desc: 'AI dengan model VEO terbaru', logo: 'https://rocket.domains/wp-content/uploads/2024/03/Gemini-AI-Logo.png', prices: [['Gemini Pro 1 thn', '30.000'], ['Gemini Pro 1 Bulan', '18.000']]},
+      {title: 'YouTube Premium', cat: 'streaming', desc: 'Tanpa iklan & offline', logo: 'https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg', prices: [['Indplan', '9.000/bln'], ['Family Slot', '6.000/bln']]},
+      {title: 'Dramabox', cat: 'streaming', desc: 'Drama favorit tanpa batas', logo: 'https://play-lh.googleusercontent.com/dYAF42EhNGgGhC7nLHNSZkWs11W5Dv0mRWZBv6IgLDTh3l8eolsjeAVGg-HVHt9YWyA', prices: [['1 Bulan Sharing', '15.000']]},
+      {title: 'Alight Motion', cat: 'editing', desc: 'Edit video animasi profesional', logo: 'https://freepnglogo.com/images/all_img/1691819804alight-motion-logo-png.png', prices: [['1 Tahun Sharing', '4.000'], ['1 Tahun Private', '7.000']]},
+      {title: 'Apple Music', cat: 'music', desc: 'Streaming musik berkualitas', logo: 'https://freepnglogo.com/images/all_img/apple-music-logo-png-e0aa.png', prices: [['1 Bulan famplan', '10.000'], ['1 bulan head', '16.000']]},
+      {title: 'Spotify Premium', cat: 'music', desc: 'Musik tanpa iklan', logo: 'https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg', prices: [['1 Bulan Indplan', '20.000'], ['1 Bulan Family', '22.000']]},
+      {title: 'VIU Premium', cat: 'streaming', desc: 'Drama Asia terlengkap', logo: 'https://is1-ssl.mzstatic.com/image/thumb/Purple124/v4/7d/5b/e9/7d5be933-a76a-cce4-3380-5360f16e444d/AppIcon-0-0-1x_U007emarketing-0-0-0-4-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/512x512bb.jpg', prices: [['1 Bulan Private', '8.000'], ['1 Tahun Private', '15.000'], ['Lifetime', '18.000']]},
+      {title: 'WeTV Premium', cat: 'streaming', desc: 'Drama & variety show', logo: 'https://tse3.mm.bing.net/th/id/OIP.E_VVzxIU-Q2P_uBbhPJbEAHaHa?w=1024&h=1024&rs=1&pid=ImgDetMain&o=7&rm=3', prices: [['1 Bulan 6u', '10.000'], ['1 Bulan 3u', '18.000'], ['1 Bulan Private', '40.000']]},
+      {title: 'Reelshort VIP', cat: 'streaming', desc: 'Drama Pendek', logo: 'https://cdn.aptoide.com/imgs/7/7/8/778d6297e5e50c6d57fd830979071692_icon.png', prices: [['1 Bulan Sharing', '15.000']]},
+      {title: 'Bstation Premium', cat: 'streaming', desc: 'Streaming Anime', logo: 'https://play-lh.googleusercontent.com/nug7F0n-jWMpAWLaU7Qi1kuTIYjrAtUJmZd5FW4mEyspYR7-zGa-3_fwnYkPgyzHozE3', prices: [['1 Bulan Sharing', '8.000'], ['1 Tahun Sharing', '18.000']]},
+      {title: 'Microsoft 365', cat: 'tools', desc: 'Editing makalah dengan lebih leluasa', logo: 'https://iconlogovector.com/uploads/images/2023/03/lg-0438cfb397d95751203ce73d7a6dcd3e30.jpg', prices: [['1 Bulan Acc Seller', '10.000'], ['1 Bulan Acc buyer', '15.000']]},
+      {title: 'Zoom Premium', cat: 'tools', desc: 'Zoom dengan lebih profesional', logo: 'https://wallpapers.com/images/hd/zoom-pictures-xyphlin0b1cgb1fd.jpg', prices: [['14 hari', '8.000'],['1 Bulan Private', '15.000']]},
+      {title: 'iQIYI Premium', cat: 'streaming', desc: 'Konten Asia berkualitas', logo: 'https://play-lh.googleusercontent.com/L40FnQ8nF8zRtUdALz9b23JirsxYA5-0_fkRUlFBMymud09ctBCFrNui4l-ES_V6Uw', prices: [['1 Bulan Standar', '7.000'], ['1 Tahun Standar', '17.000'], ['1 Bulan Premium', '8.000'], ['1 Tahun Premium', '18..000']]},
+      {title: 'Prime Video', cat: 'streaming', desc: 'Amazon Original', logo: 'https://www.altibox.no/wp-content/uploads/2022/08/prime-vidoe.png', prices: [['1 Bulan Sharing 3u', '9.000'], ['1 Bulan Private', '  18.000']]},
+      {title: 'Picsart Premium', cat: 'editing', desc: 'Edit foto & desain', logo: 'https://vectorseek.com/wp-content/uploads/2023/08/Picsart-Icon-Logo-Vector.svg-.png', prices: [['1 Bulan Sharing', '6.000'], ['1 Bulan Private', '12.000']]},
+      {title: 'Youku Premium', cat: 'streaming', desc: 'Streaming dari China', logo: 'https://play-lh.googleusercontent.com/tCS-GBn1rQC-3gd84ssXFTmBFl_8VAYnj8l4BDrQdsCeDkddcbhLxDlyr5shrMC9r5I=w220', prices: [['1 Bulan', '8.000'], ['3 Bulan', '15.000'], ['1 Tahun', '18.000']]},
+      {title: 'Moviebox Premium', cat: 'streaming', desc: 'Film & series lengkap', logo: 'https://4.bp.blogspot.com/-VwY4NjwtT8c/Ur2z9FxhEcI/AAAAAAAADV4/aOWTN6piF-I/s1600/Movie+Box.png', prices: [['1 Bulan Android', '8.000'], ['1 Bulan iOS', '10.000'], ['1 Tahun Android', '18.000']]},
+      {title: 'Wink Premium', cat: 'other', desc: 'Platform hiburan', logo: 'https://tse4.mm.bing.net/th/id/OIP.SsLG2P4ZubuTFF_X-LC0jQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3', prices: [['7 Hari 2u', '8.000'], ['7 Hari Private', '13.000']]},
+      {title: 'Fizzo Premium', cat: 'other', desc: 'hiburan', logo: 'https://tse2.mm.bing.net/th/id/OIP.jAyURSHnB5HUPvBmcu14JgAAAA?rs=1&pid=ImgDetMain&o=7&rm=3', prices: [['1 Bulan Sharing', '10.000']]},
+      {title: 'Getcontact Premium', cat: 'tools', desc: 'Cek Nomer Dan Terhindar Dari Penipuan', logo: 'https://free-png.ru/wp-content/uploads/2021/11/free-png.ru-488.png', prices: [['1 Bulan', '10.000'], ['Cek 1 Nomer', '1000']]},
+      {title: 'Wattpad Premium', cat: 'other', desc: 'Baca cerita tanpa iklan', logo: 'https://cdn-icons-png.flaticon.com/512/3992/3992005.png', prices: [['1 Bulan', '8.000'], ['1 Tahun', '16.000']]},
+      {title: 'Vidio Premium', cat: 'streaming', desc: 'TV & sport Indonesia', logo: 'https://cdn.freelogovectors.net/wp-content/uploads/2021/12/vidio-logo-freelogovectors.net_-400x400.png', prices: [['1 Bulan 2u All Device', '24.000'], ['1 Bulan Private All Device', '37.000'], ['1 Bulan 2u Mobile', '18.000'], ['1 Bulan Private Mobile', '25.000'], ['Only TV 1 Tahun', '12.000']]},
+      {title: 'Loklok Premium', cat: 'streaming', desc: 'Drama & film Asia', logo: 'https://loklokapkk.com/wp-content/uploads/2024/12/logo-table-new-1.webp', prices: [['1 Bulan 3u Android', '24.000'], ['1 Bulan 5u TV', '21.000']]},
+      {title: 'HBO Max', cat: 'streaming', desc: 'Series blockbuster', logo: 'https://www.gloryofthesnow.com/wp-content/uploads/2022/05/HBO-Max-Black.png', prices: [['1 Bulan Ultimate Sharing', '20.000'], ['1 Bulan Standar Sharing', '15.000']]},
+      {title: 'Wibuku Premium', cat: 'streaming', desc: 'Streaming Anime', logo: 'https://play-lh.googleusercontent.com/EAVnwk0BS5chgGbygHiIYu2w5OLx54GdXDZQBsdLM4rU_xZ86fPjBmLAljN9wARvmvxA', prices: [['1 Tahun Sharing', '16.000']]},
+      {title: 'Lightroom Premium', cat: 'editing', desc: 'Edit foto profesional', logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b6/Adobe_Photoshop_Lightroom_CC_logo.svg', prices: [['1 Tahun Sharing', '20.000']]},
+      {title: 'Meitu Premium', cat: 'editing', desc: 'Edit foto dengan AI', logo: 'https://getmodsapk.com/storage/Meitu%20MOD%20APK0.png', prices: [['1 Bulan 3u', '20.000']]},
+      {title: 'Vision Premium', cat: 'streaming', desc: 'Sport & entertainment', logo: 'https://mir-s3-cdn-cf.behance.net/projects/max_808/35b05093008279.Y3JvcCwxNDg2LDExNjIsNDk2LDUxNQ.jpg', prices: [['Timnas & Bein Pay TV 1 Bulan', '20.000'], ['Ultimate Premium', '60.000']]}
+    ];
+
+    const CATEGORIES = [
+      { key: "all",       label: "Semua" },
+      { key: "streaming", label: "Streaming" },
+      { key: "music",     label: "Musik" },
+      { key: "ai",        label: "AI" },
+      { key: "editing",   label: "Editing & desain" },
+      { key: "tools",     label: "Produktivitas" },
+      { key: "other",     label: "Lainnya" }
+    ];
+
+    // =====================================================
+    // 3. HELPER
+    // =====================================================
+    const $ = (sel) => document.querySelector(sel);
+    const normalize = (t) => String(t || "").toLowerCase().trim();
+    const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
+    const waLink = (num, text) => `https://wa.me/${num}` + (text ? `?text=${encodeURIComponent(text)}` : "");
+    const BOT_LINK = waLink(CONFIG.WA_BOT, CONFIG.BOT_TEXT);
+
+    // "35.000/bln" -> { value: 35000, text: "Rp35.000/bln" }; "1000" -> "Rp1.000"; "18..000" -> "Rp18.000"
+    function parsePrice(raw){
+      const s = String(raw).trim();
+      const m = s.match(/^([\d.,\s]*\d)(.*)$/);
+      if (!m) return { value: NaN, text: s };
+      const value = Number(m[1].replace(/\D/g, ""));
+      return { value, text: "Rp" + value.toLocaleString("id-ID") + m[2].trim() };
+    }
+
+    // Cadangan jika produk baru tidak diberi "cat". Memakai batas kata (\b)
+    // supaya "entertainment" tidak terbaca sebagai "ai".
+    function guessCategory(title, desc){
+      const t = normalize(title + " " + desc);
+      if (/\b(netflix|youtube|viu|wetv|iqiyi|prime|vidio|hbo|movie\w*|drama\w*|loklok|youku|wibuku|bstation|anime|series)\b/.test(t)) return "streaming";
+      if (/\b(spotify|apple music|musik|music)\b/.test(t)) return "music";
+      if (/\b(canva|capcut|alight|picsart|lightroom|meitu|design|desain|joki|ppt|logo|banner|poster|edit)\b/.test(t)) return "editing";
+      if (/\b(chatgpt|gemini|ai|veo)\b/.test(t)) return "ai";
+      if (/\b(microsoft|365|zoom|getcontact)\b/.test(t)) return "tools";
+      return "other";
+    }
+
+    function initials(title){
+      const words = title.replace(/[^\p{L}\p{N}\s]/gu, " ").split(/\s+/)
+        .filter((w) => w && !/^(premium|pro|vip)$/i.test(w));
+      return (words.slice(0, 2).map((w) => w[0]).join("") || title[0] || "?").toUpperCase();
+    }
+
+    function mediaHTML(p, size){
+      const cls = "tile" + (size ? " tile-" + size : "");
+      const px = size === "lg" ? 64 : 48;
+      const ini = esc(initials(p.title));
+      if (!p.logo) return `<span class="${cls}"><span class="tile-fallback" aria-hidden="true">${ini}</span></span>`;
+      return `<span class="${cls}"><img src="${esc(p.logo)}" alt="" width="${px}" height="${px}" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-initials="${ini}"></span>`;
+    }
+
+    // Gambar gagal dimuat: tampilkan inisial produk (satu listener untuk semua gambar)
+    document.addEventListener("error", (e) => {
+      const img = e.target;
+      if (!(img instanceof HTMLImageElement) || !img.dataset.initials) return;
+      const span = document.createElement("span");
+      span.className = "tile-fallback";
+      span.setAttribute("aria-hidden", "true");
+      span.textContent = img.dataset.initials;
+      img.replaceWith(span);
+    }, true);
+
+    // =====================================================
+    // 4. DATA SIAP PAKAI
+    // =====================================================
+    const enriched = products.map((p, idx) => {
+      const pkgs = (p.prices || []).map(([name, price]) => ({ name, ...parsePrice(price) }));
+      const valid = pkgs.filter((x) => !Number.isNaN(x.value));
+      const cheapest = valid.reduce((a, b) => (b.value < a.value ? b : a), valid[0] || { value: 0, text: "-" });
+      return {
+        ...p,
+        id: idx + 1,
+        cat: p.cat || guessCategory(p.title, p.desc),
+        pkgs,
+        min: cheapest.value,
+        minText: cheapest.text,
+        featured: PILIHAN_ADMIN.test(p.title)
+      };
+    });
+    const byId = new Map(enriched.map((p) => [p.id, p]));
+    const catLabel = (key) => (CATEGORIES.find((c) => c.key === key) || {}).label || "";
+
+    // =====================================================
+    // 5. ELEMEN
+    // =====================================================
+    const grid = $("#grid"), empty = $("#empty"), q = $("#q"), clearQ = $("#clearQ"),
+          sortSel = $("#sort"), chips = $("#chips"), resultCount = $("#resultCount");
+    const state = { cat: "all" };
+
+    // =====================================================
+    // 6. LOGO TOKO + TAUTAN STATIS
+    // =====================================================
+    const brandLogo = $("#brandLogo");
+    function brandFallback(){
+      const m = document.createElement("span");
+      m.className = "brand-monogram";
+      m.setAttribute("aria-hidden", "true");
+      m.textContent = "AL";
+      brandLogo.replaceWith(m);
+    }
+    if (brandLogo.complete && brandLogo.naturalWidth === 0) brandFallback();
+    else brandLogo.addEventListener("error", brandFallback, { once: true });
+
+    // Logo besar di hero cukup disembunyikan kalau file tidak ada
+    const heroLogo = $("#heroLogo");
+    const hideHeroLogo = () => { heroLogo.closest(".hero-mark").hidden = true; };
+    if (heroLogo.complete && heroLogo.naturalWidth === 0) hideHeroLogo();
+    else heroLogo.addEventListener("error", hideHeroLogo, { once: true });
+
+    const adminLink = waLink(CONFIG.WA_ORDER_ADMIN);
+    $("#navAdmin").href = adminLink;
+    $("#barAdmin").href = adminLink;
+    $("#barBot").href = BOT_LINK;
+    $("#tgTesti").href = CONFIG.TELEGRAM_URL;
+    $("#sinceYear").textContent = CONFIG.SINCE;
+    $("#sinceYear2").textContent = CONFIG.SINCE;
+    $("#copyYear").textContent = new Date().getFullYear();
+
+    // Tombol "Cari" di bar bawah: lompat ke katalog lalu fokus ke kolom pencarian
+    $("#barSearch").addEventListener("click", () => {
+      $("#products").scrollIntoView({ block: "start" });
+      q.focus({ preventScroll: true });
+    });
+
+    // =====================================================
+    // 7. MENU HP
+    // =====================================================
+    const menuToggle = $("#menuToggle"), mobileMenu = $("#mobileMenu");
+    function setMenu(open){
+      mobileMenu.hidden = !open;
+      menuToggle.setAttribute("aria-expanded", String(open));
+      menuToggle.innerHTML = `<i class="fa-solid ${open ? "fa-xmark" : "fa-bars"}" aria-hidden="true"></i><span>${open ? "Tutup" : "Menu"}</span>`;
+    }
+    menuToggle.addEventListener("click", () => setMenu(mobileMenu.hidden));
+    mobileMenu.addEventListener("click", (e) => { if (e.target.closest("a")) setMenu(false); });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !mobileMenu.hidden){ setMenu(false); menuToggle.focus(); }
+    });
+    window.matchMedia("(min-width: 861px)").addEventListener("change", (e) => { if (e.matches) setMenu(false); });
+
+    // =====================================================
+    // 8. TOAST + SALIN
+    // =====================================================
+    const toast = $("#toast");
+    let toastTimer;
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.hidden = false;
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => { toast.hidden = true; }, 2200);
+    }
+    async function copyText(text){
+      try{
+        await navigator.clipboard.writeText(text);
+        return true;
+      }catch(_){
+        const ta = document.createElement("textarea");
+        ta.value = text; ta.setAttribute("readonly", "");
+        ta.style.position = "fixed"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.select();
+        let ok = false;
+        try{ ok = document.execCommand("copy"); }catch(_){}
+        ta.remove();
+        return ok;
+      }
+    }
+
+    // =====================================================
+    // 9. KONTAK + TESTIMONI
+    // =====================================================
+    const prettyNum = (n) => "+" + n.replace(/^62(\d{3})(\d{4})(\d+)$/, "62 $1-$2-$3");
+    const CONTACTS = [
+      { icon: "fa-brands fa-whatsapp", title: "WhatsApp Admin", sub: "Pertanyaan dan bantuan, fast respon 24/7", href: waLink(CONFIG.WA_ADMIN) },
+      { icon: "fa-solid fa-bag-shopping", title: "Admin order", sub: prettyNum(CONFIG.WA_ORDER_ADMIN), href: adminLink, copy: "+" + CONFIG.WA_ORDER_ADMIN },
+      { icon: "fa-solid fa-list-ol", title: "Bot auto order", sub: "Kirim LIST, lalu pilih nomor produk", href: BOT_LINK },
+      { icon: "fa-solid fa-users", title: "Grup WhatsApp", sub: "Komunitas dan info promo", href: CONFIG.GROUP_URL },
+      { icon: "fa-brands fa-instagram", title: "Instagram", sub: CONFIG.INSTAGRAM_LABEL, href: CONFIG.INSTAGRAM_URL },
+      { icon: "fa-brands fa-telegram", title: "Telegram", sub: "Lihat testimoni", href: CONFIG.TELEGRAM_URL }
+    ];
+    $("#contactList").innerHTML = CONTACTS.map((c) => `
+      <li>
+        <a class="contact-link" href="${esc(c.href)}" target="_blank" rel="noopener noreferrer">
+          <span class="contact-ic"><i class="${c.icon}" aria-hidden="true"></i></span>
+          <span class="contact-text"><b>${esc(c.title)}</b><span>${esc(c.sub)}</span></span>
+        </a>
+        ${c.copy ? `<button class="btn btn-ghost btn-sm copy-btn" type="button" data-copy="${esc(c.copy)}" aria-label="Salin nomor admin order"><i class="fa-regular fa-copy" aria-hidden="true"></i> Salin</button>` : ""}
+      </li>`).join("");
+    $("#contactList").addEventListener("click", async (e) => {
+      const btn = e.target.closest("[data-copy]");
+      if (!btn) return;
+      const num = btn.dataset.copy;
+      if (await copyText(num)) showToast("Nomor admin disalin");
+      else alert("Gagal menyalin. Nomor WA admin: " + num);
+    });
+
+    if (TESTIMONI.length){
+      const list = $("#testimonials");
+      list.innerHTML = TESTIMONI.map((t) => `<li><blockquote>${esc(t.teks)}<cite>${esc(t.nama || "")}</cite></blockquote></li>`).join("");
+      list.hidden = false;
+    }
+
+    // =====================================================
+    // 10. KATALOG: KATEGORI, CARI, URUTKAN
+    // =====================================================
+    function renderChips(){
+      chips.innerHTML = CATEGORIES.map((c) => {
+        const n = c.key === "all" ? enriched.length : enriched.filter((p) => p.cat === c.key).length;
+        if (!n) return "";
+        return `<button class="chip" type="button" data-cat="${c.key}" aria-pressed="${c.key === state.cat}">
+          ${esc(c.label)} <span class="chip-count">${n}</span></button>`;
+      }).join("");
+    }
+    chips.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-cat]");
+      if (!btn) return;
+      state.cat = btn.dataset.cat;
+      chips.querySelectorAll("[data-cat]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.cat === state.cat)));
+      apply();
+    });
+
+    function cardHTML(p){
+      const n = p.pkgs.length;
+      return `
+        <li>
+          <button class="product" type="button" data-id="${p.id}"
+            aria-label="${esc(p.title)}. ${esc(p.desc)}. ${n} paket, mulai ${esc(p.minText)}${p.featured ? ". Pilihan admin" : ""}. Lihat paket">
+            ${mediaHTML(p)}
+            ${p.featured ? `<span class="product-flag"><span class="diamond" aria-hidden="true"></span>Pilihan admin</span>` : ""}
+            <span class="product-name">${esc(p.title)}</span>
+            <span class="product-desc">${esc(p.desc)}</span>
+            <span class="product-foot">
+              <span class="product-price"><small>mulai</small><b class="num">${esc(p.minText)}</b></span>
+              <span class="product-count">${n} paket <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span>
+            </span>
+          </button>
+        </li>`;
+    }
+
+    function apply(){
+      const term = normalize(q.value);
+      clearQ.hidden = !term;
+
+      const list = enriched.filter((p) => {
+        const hay = normalize([p.title, p.desc, catLabel(p.cat), ...(p.prices || []).flat()].join(" "));
+        return (!term || hay.includes(term)) && (state.cat === "all" || p.cat === state.cat);
+      });
+
+      switch (sortSel.value){
+        case "az":   list.sort((a, b) => a.title.localeCompare(b.title, "id")); break;
+        case "za":   list.sort((a, b) => b.title.localeCompare(a.title, "id")); break;
+        case "low":  list.sort((a, b) => a.min - b.min); break;
+        case "high": list.sort((a, b) => b.min - a.min); break;
+        default:     list.sort((a, b) => (Number(b.featured) - Number(a.featured)) || (a.min - b.min));
+      }
+
+      grid.innerHTML = list.map(cardHTML).join("");
+      grid.hidden = list.length === 0;
+      empty.hidden = list.length !== 0;
+
+      const filtered = term || state.cat !== "all";
+      resultCount.innerHTML = filtered
+        ? `<b class="num">${list.length}</b> dari ${enriched.length} produk`
+        : `<b class="num">${list.length}</b> produk`;
+
+      if (!list.length){
+        $("#emptyTitle").textContent = term ? `“${q.value.trim()}” belum ada di katalog` : "Belum ada produk di kategori ini";
+        $("#askAdmin").href = waLink(CONFIG.WA_ORDER_ADMIN, term ? `Halo, apakah ada ${q.value.trim()}?` : "");
+      }
+    }
+
+    q.addEventListener("input", apply);
+    sortSel.addEventListener("change", apply);
+    clearQ.addEventListener("click", () => { q.value = ""; q.focus(); apply(); });
+    $("#resetFilters").addEventListener("click", () => {
+      q.value = ""; state.cat = "all"; renderChips(); apply(); q.focus();
+    });
+
+    // =====================================================
+    // 11. MODAL DETAIL
+    // =====================================================
+    const dialog = $("#detail");
+    let lastTrigger = null;
+    let current = null;
+
+    const orderText = (p, pkg) =>
+      `Halo, saya mau order ${p.title}. Paket yang saya pilih: ${pkg ? `${pkg.name} (${pkg.text})` : "(tulis paket)"}.`;
+
+    function selectedPkg(){
+      const r = dialog.querySelector('input[name="pkg"]:checked');
+      return r ? current.pkgs[Number(r.value)] : null;
+    }
+    function updateOrder(){
+      const text = orderText(current, selectedPkg());
+      $("#dPreview").textContent = text;
+      $("#dOrderAdmin").href = waLink(CONFIG.WA_ORDER_ADMIN, text);
+    }
+
+    function openDetail(id, trigger){
+      const p = byId.get(id);
+      if (!p) return;
+      current = p;
+      lastTrigger = trigger || document.activeElement;
+
+      $("#dMedia").outerHTML = mediaHTML(p, "lg").replace('<span class="tile tile-lg">', '<span class="tile tile-lg" id="dMedia">');
+      $("#dName").textContent = p.title;
+      $("#dDesc").textContent = p.desc;
+      $("#dLegend").textContent = p.pkgs.length > 1 ? `Pilih paket (${p.pkgs.length} pilihan)` : "Paket";
+      $("#dPackages").innerHTML = p.pkgs.map((pkg, i) => `
+        <label class="pkg">
+          <input type="radio" name="pkg" value="${i}">
+          <span class="pkg-name">${esc(pkg.name)}</span>
+          <span class="leader" aria-hidden="true"></span>
+          <span class="pkg-price">${esc(pkg.text)}</span>
+        </label>`).join("");
+      $("#dOrderBot").href = BOT_LINK;
+      updateOrder();
+
+      document.documentElement.style.overflow = "hidden";
+      dialog.showModal();
+      dialog.querySelector(".sheet-body").scrollTop = 0;
+      $("#dName").focus();
+    }
+
+    function closeDetail(){ if (dialog.open) dialog.close(); }
+    dialog.addEventListener("close", () => {
+      document.documentElement.style.overflow = "";
+      if (lastTrigger && document.contains(lastTrigger)) lastTrigger.focus();
+    });
+    $("#dClose").addEventListener("click", closeDetail);
+    dialog.addEventListener("click", (e) => { if (e.target === dialog) closeDetail(); }); // ketuk area gelap
+    $("#dPackages").addEventListener("change", updateOrder);
+    $("#dCopy").addEventListener("click", async () => {
+      const text = orderText(current, selectedPkg());
+      if (await copyText(text)) showToast("Teks order disalin");
+      else alert("Gagal menyalin. Salin manual:\n\n" + text);
+    });
+
+    grid.addEventListener("click", (e) => {
+      const btn = e.target.closest(".product[data-id]");
+      if (btn) openDetail(Number(btn.dataset.id), btn);
+    });
+
+    // =====================================================
+    // 12. MULAI
+    // =====================================================
+    renderChips();
+    apply();
+  </script>
+</body>
+</html>
